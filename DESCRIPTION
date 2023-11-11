@@ -1,12 +1,18 @@
-Package: spatial.datasources
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Package: sds
+Title: Spatial Data Sources
+Version: 0.0.1
 Authors@R: 
     person("Michael", "Sumner", , "mdsumner@gmail.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Description: Functions for descriptions of spatial data sources that can be read
+ directly with or without download. Most sources are readable by 'GDAL' software. 
+ There are functions for imagery, elevation, and a variety of easily accessible 
+ data streams including image tile servers, links to online files, and geographic
+ data services. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
-URL: https://github.com/hypertidy/spatial.datasources
-BugReports: https://github.com/hypertidy/spatial.datasources/issues
+URL: https://github.com/hypertidy/sds
+BugReports: https://github.com/hypertidy/sds/issues
+Imports: 
+    countrycode

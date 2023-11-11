@@ -59,7 +59,7 @@ srtm15 <- function() "/vsicurl/https://opentopography.s3.sdsc.edu/raster/SRTM15P
 #'
 #' A data source name to the GEBCO  elevation 'COG' GeoTIFF.
 #'
-#' GEBCO 2022 is created and hosted by Philippe Massicotte.
+#' GEBCO 2023 and 2022 is created and hosted by Philippe Massicotte.
 #'
 #' GEBCO 2019 and 2021 created and hosted by the Australian Antarctic Division.
 #'

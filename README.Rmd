@@ -65,6 +65,9 @@ There are image tile servers:
 ```{r tiles}
 wms_arcgis_mapserver_ESRI.WorldImagery_tms()
 wms_openstreetmap_tms()
+
+## not shown else will reveal my INSTANCE_ID
+wms <- sentinel2_wms()
 ```
 
 And a very specific sea ice source: 

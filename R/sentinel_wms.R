@@ -1,3 +1,15 @@
+#' Sentinel 2 WMS
+#'
+#' To use this you must have your own "INSTANCE_ID", set this in env var
+#' "SENTINELHUB_INSTANCE_ID".
+#' @param layer see layer options in the argument, default is "TRUE-COLOR-S2L2A"
+#' @param datetime a valid datetime or NA for "latest"
+#'
+#' @return a string to a WMS
+#' @export
+#'
+#' @examples
+#' sentinel2_wms()
 sentinel2_wms <- function(layer = c("TRUE-COLOR-S2L2A", "NDVI", "FALSE-COLOR", "FALSE-COLOR-URBAN", "AGRICULTURE",
 "BATHYMETRIC", "GEOLOGY", "MOISTURE-INDEX", "SWIR", "NATURAL-COLOR"), datetime = NA) {
   layer <- match.arg(layer)

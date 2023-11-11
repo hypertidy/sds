@@ -1,11 +1,12 @@
 #' Microsoft Planetary Computer
 #'
-#' Function `mpc_stacit()` will return a full data source name for a Spatio-Temporal Asset Catalog ('STAC').
+#' Function `mpc()` will return a full data source name for a Spatio-Temporal Asset Catalog ('STAC').
 #'
 #' Each argument has a default, use them to set the collection, datetime range, bounding box, and asset.
 #'
 #' If no asset is specfied the description is a complex source composed of multiple subdatasets ('GDAL' terminology).
 #' In a 'STAC' context "asset" and "subdataset" are synonomous for 'GDAL'.
+#' 
 #' @param collection name of the collection e.g. "sentinel-2-l2a", "naip", or ""landsat-c2-l2"
 #' @param bbox a string in the form 'xmin,ymin,xmax,ymax' where x,y are longitude and latitude values (OR a numeric extent xmin,xmax,ymin,ymax)
 #' @param datetime a datetime of 1 or 2 values to give a range in time, if only one is given it is treated as an open interval to the present

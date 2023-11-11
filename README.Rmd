@@ -1,0 +1,80 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# sds
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/hypertidy/spatial.datasources/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/hypertidy/spatial.datasources/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
+The goal of sds is to provide spatial data sources!!
+
+## Installation
+
+You can install the development version of sds from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("hypertidy/sds")
+```
+
+## Example
+
+This shows some of the variety of the sources available. 
+
+```{r example}
+library(sds)
+
+gebco() ## a global seamless topography (bathymetry and elevation)
+
+CGAZ()  ## a global nations boundaries dataset
+
+CGAZ_sql(c("New Zealand", "Australia")) ## a SQL query for the CGAZ polygons
+
+cop30()  ## a global 30m elevation data set 
+
+
+mpc()  ## return STAC collections for use with GDAL
+
+mpc( datetime = as.Date(c("2019-06-01", "2019-08-01")), 
+    bbox = c(-148.56, -147.44, 60.80, 61.18), asset = "visual")
+
+## or return just the string a for jsonlite read
+js <- jsonlite::fromJSON(mpc(stacit  = F))
+## do it how you like
+js$features$assets$visual$href
+
+
+```
+
+
+There are image tile servers: 
+
+```{r tiles}
+wms_arcgis_mapserver_ESRI.WorldImagery_tms()
+wms_openstreetmap_tms()
+```
+
+And a very specific sea ice source: 
+
+```{r nsidc}
+nsidc_seaice(hemisphere = "south")
+nsidc_seaice(hemisphere = "north")
+```
+
+
+## Code of Conduct
+  
+Please note that the sds project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.

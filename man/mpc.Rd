@@ -27,7 +27,7 @@ mpc(
 a string, a data source name for 'GDAL'
 }
 \description{
-Function \code{mpc_stacit()} will return a full data source name for a Spatio-Temporal Asset Catalog ('STAC').
+Function \code{mpc()} will return a full data source name for a Spatio-Temporal Asset Catalog ('STAC').
 }
 \details{
 Each argument has a default, use them to set the collection, datetime range, bounding box, and asset.

@@ -160,6 +160,24 @@ CGAZ_sql <- function(codes) {
 csql
 }
 
+#' REMA reference elevation model of Antarctica
+#'
+#' This is a single description string for all of the 2m REMA. The VRT is crafted with efficient
+#' overviews so is much more performant with the warper API than other existing descriptions.
+#'
+#' See [rema-ovr](https://github.com/mdsumner/rema-ovr) for examples.
+#'
+#' @export
+#' @aliases rema_v2
+#' @return character string, GDAL-readable raster data source name
+rema <- function() {
+  rema_v2()
+}
+#' @name rema
+#' @export
+rema_v2 <- function() {
+  "/vsicurl/https://raw.githubusercontent.com/mdsumner/rema-ovr/main/REMA-2m_dem_ovr.vrt"
+}
 
 
 #' MURSST (GHRSST) sst Zarr source

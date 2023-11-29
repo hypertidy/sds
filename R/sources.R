@@ -179,6 +179,26 @@ rema_v2 <- function() {
   "/vsicurl/https://raw.githubusercontent.com/mdsumner/rema-ovr/main/REMA-2m_dem_ovr.vrt"
 }
 
+#' Tasmania DEM (2m)
+#'
+#' by MRT 2021
+#'
+#' @param vsicurl prefix with vsicurl or not
+#'
+#' @return data source name for Tasmania 2m DEM
+#' @export
+#'
+#' @examples
+#' tas_dem()
+tas_dem <- function(vsicurl = TRUE) {
+ url <- "https://s3.us-west-2.amazonaws.com/us-west-2.opendata.source.coop/alexgleith/tasmania-dem-2m/Tasmania_Statewide_2m_DEM_14-08-2021.tif"
+ if (vsicurl) {
+   file.path("/vsicurl", url)
+ } else {
+   url
+ }
+}
+
 
 #' MURSST (GHRSST) sst Zarr source
 #'

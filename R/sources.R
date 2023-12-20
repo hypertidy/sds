@@ -299,3 +299,27 @@ ozgrab_bag_sources <- c("WMTS:https://maps.sa.gov.au/arcgis/rest/services/BaseMa
                         "WMTS:https://gissdi.dmp.wa.gov.au/gisexternal/rest/services/External/GSD_Basemap_External/MapServer/WMTS/1.0.0/WMTSCapabilities.xml",
                         "WMTS:https://base.maps.vic.gov.au/service?service=wmts&request=getCapabilities,layer=CARTO_WM_256"
 )
+
+
+#' IBCOS source dsn
+#'
+#' A data source name to the IBCSO  elevation 'COG' GeoTIFF.
+#'
+#' Currently at v2.
+#'
+#' @param vsi include the 'vsicurl' prefix (`TRUE` is default)
+#' @param chart the image or the data? set to TRUE for image (it's a PDF)
+#'
+#' @returns character string, URL to online raster
+#' @export
+#'
+
+#' @examples
+#' ibcso()
+#'
+ibcso <- function(vsi = TRUE, chart = FALSE) {
+  u <- "https://github.com/mdsumner/ibcso-cog/raw/main/IBCSO_v2_ice-surface_cog.tif"
+  if (chart) u <- "https://github.com/mdsumner/ibcso-cog/raw/main/IBSCO_v2_digital_chart.tif"
+  if (vsi) u <- sprintf("/vsicurl/%s", u)
+  u
+}

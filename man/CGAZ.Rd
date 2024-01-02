@@ -13,7 +13,8 @@ CGAZ_sql(codes)
 \item{codes}{a list of iso3 country codes, or country names (this is a bit sketchy)}
 }
 \description{
-the geoBoundaries countries
+CGAZ() returns the DSN, a shapefile of geo boundaries, CGAZ_sql() returns SQL suitable for use
+with GDAL, for the names or codes of countries.
 }
 \examples{
 CGAZ_sql(c("Australia", "New Zealand"))

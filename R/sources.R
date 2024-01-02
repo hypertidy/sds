@@ -125,6 +125,9 @@ gebco19 <- function(vsi = TRUE) {
 
 #' the geoBoundaries countries
 #'
+#' CGAZ() returns the DSN, a shapefile of geo boundaries, CGAZ_sql() returns SQL suitable for use
+#' with GDAL, for the names or codes of countries.
+#'
 #' @export
 #' @name CGAZ
 #' @aliases CGAZ_sql
@@ -143,7 +146,9 @@ CGAZ <- function() "/vsizip//vsicurl/https://github.com/wmgeolab/geoBoundaries/r
 #' ##                                        "-cutline", CGAZ(),
 #' ##                                         "-csql", CGAZ_sql(c("Australia", "New Zealand")) ))
 CGAZ_sql <- function(codes) {
-    #if (missing(codes)) stop("set codes to one or more iso3c country codes or their _names_, or to 'NULL' to get all")
+    if (missing(codes)) {
+      return("SELECT * FROM geoBoundariesCGAZ_ADM0")
+    }
     dsn <- CGAZ()
     #where <- c("Australia", "New Zealand", "Antarctica")[1]
     layer <- "geoBoundariesCGAZ_ADM0" ##vapour::vapour_layer_names(dsn)[1L]

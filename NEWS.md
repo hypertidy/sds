@@ -1,5 +1,7 @@
 # sds dev
 
+* `CGAZ_sql()` now works with no arguments, and returns a general query useable by vapour_read_geometry() and friends. 
+
 * Add `rema()` and `rema_v2()`. 
 
 # sds 0.0.1

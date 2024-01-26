@@ -1,3 +1,18 @@
+#' USGS seamless DEM
+#'
+#' @param vsicurl if TRUE prefix /vsicurl
+#' @examples
+#'
+#' usgs_seamless()
+#'
+usgs_seamless <- function(vsicurl = TRUE) {
+  url <- "https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1/TIFF/USGS_Seamless_DEM_1.vrt"
+  if (vsicurl) {
+    url <- sprintf("/vsicurl/%s", url)
+  }
+  url
+}
+
 #' Imagery online sources
 #'
 #' Raster and imagery online

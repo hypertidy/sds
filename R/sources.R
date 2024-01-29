@@ -344,3 +344,11 @@ ibcso <- function(vsi = TRUE, chart = FALSE) {
   if (vsi) u <- sprintf("/vsicurl/%s", u)
   u
 }
+
+#' DEA 250m dem
+#' @export
+dea_250m_dem <- function(vsi = TRUE) {
+  u <- "https://s3.ap-southeast-2.amazonaws.com/ausseabed-public-warehouse-bathymetry/L3/6009f454-290d-4c9a-a43d-00b254681696/Australian_Bathymetry_and_Topography_2023_250m_MSL_cog.tif"
+  if (vsi) u <- sprintf("/vsicurl/%s", u)
+  u
+}

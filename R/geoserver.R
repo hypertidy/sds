@@ -15,9 +15,13 @@ aadc_geoserver <- function (type = c("WFS"))
   out
 }
 
+dea_wmts <- function() {
+  dea_geoserver("WMTS")
+}
 dea_geoserver <- function(type = c("WFS")) {
   dea <- c(WFS = "WFS:http://geoserver.dea.ga.gov.au/geoserver/wfs?REQUEST=GetCapabilities",
-           WMTS = "WMTS:https://geoserver.dea.ga.gov.au/geoserver/gwc/service/wmts?REQUEST=GetCapabilities")
+           WMTS = "WMTS:https://ows.dea.ga.gov.au/?service=WMTS&request=GetCapabilities")
+           #WMTS = "WMTS:https://geoserver.dea.ga.gov.au/geoserver/gwc/service/wmts?REQUEST=GetCapabilities")
   out <- generic_supported(dea, type)
   out
 }

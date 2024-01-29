@@ -1,6 +1,7 @@
 #' USGS seamless DEM
 #'
 #' @param vsicurl if TRUE prefix /vsicurl
+#' @export
 #' @examples
 #'
 #' usgs_seamless()

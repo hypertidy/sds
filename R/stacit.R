@@ -33,12 +33,13 @@ stacit <- function(extent, date = Sys.Date()- 1, collections = "sentinel-2-c1-l2
   if (length(date) == 1L) {
     if (nchar(date) == 7L && grepl("-", date)) {
       date <- seq(as.Date(sprintf(c("%s-01"), date)), length.out = 2L, by = "1 month")
+
       date[2] <- date[2] - 1
-    }
-    if (nchar(date) == 4L && !is.na(as.integer(date))) {
+    } else {
+      if (nchar(date) == 4L && !is.na(as.integer(date))) {
       date <- sprintf(c("%s-01-01", "%s-12-31"), date)
     }
-
+}
 
     date <- c(format(min(as.Date(date)), "%FT00:00:00Z"),
       format(max(as.Date(date)), "%FT23:59:59Z"))

@@ -40,6 +40,12 @@
     <loc>/reference/index.html</loc>
   </url>
   <url>
+    <loc>/reference/list_address.html</loc>
+  </url>
+  <url>
+    <loc>/reference/list_parcel.html</loc>
+  </url>
+  <url>
     <loc>/reference/mpc.html</loc>
   </url>
   <url>
@@ -56,6 +62,9 @@
   </url>
   <url>
     <loc>/reference/sentinel2_wms.html</loc>
+  </url>
+  <url>
+    <loc>/reference/stacit.html</loc>
   </url>
   <url>
     <loc>/reference/tas_dem.html</loc>

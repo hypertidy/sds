@@ -22,12 +22,8 @@ stacit <- function(extent, date = "", collections = "sentinel-2-c1-l2a",
   provider <-  provider[1L]
   if (missing(extent)) stop("'extent' must be provided, a vector of 'c(xmin, xmax, ymin, ymax)' in longlat coords")
 
-  if (extent[2] > 180) {
-    bb <- c(paste0(c(extent[1], extent[3], 180, extent[4]), collapse = ","),
-            paste0(c(-180, extent[3], extent[2] - 360, extent[4]), collapse = ","))
-  } else {
-    bb <- paste0(extent[c(1, 3, 2, 4)], collapse = ",")
-  }
+  ## if bb is of length 2 it's because we have two regions either side of the antimeridia
+  bb <- .extenthandler(extent)
 
 
   date <- .datehandler(date)

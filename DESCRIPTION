@@ -1,6 +1,6 @@
 Package: sds
 Title: Spatial Data Sources
-Version: 0.0.1.9005
+Version: 0.0.1.9006
 Authors@R: 
     person("Michael", "Sumner", , "mdsumner@gmail.com", role = c("aut", "cre"))
 Description: Functions for descriptions of spatial data sources that can be read
@@ -16,3 +16,6 @@ URL: https://github.com/hypertidy/sds
 BugReports: https://github.com/hypertidy/sds/issues
 Imports: 
     countrycode
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

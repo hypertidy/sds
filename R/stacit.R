@@ -12,7 +12,7 @@
 #'
 #' @examples
 #' stacit(c(140, 145, -43, -40))
-stacit <- function(extent, date = Sys.Date()- 1, collections = "sentinel-2-c1-l2a",
+stacit <- function(extent, date = "", collections = "sentinel-2-c1-l2a",
                      provider = c("https://earth-search.aws.element84.com/v1/search",
                                   "https://planetarycomputer.microsoft.com/api/stac/v1/search"),
                      asset = c("visual"),
@@ -30,24 +30,7 @@ stacit <- function(extent, date = Sys.Date()- 1, collections = "sentinel-2-c1-l2
   }
 
 
-  if (length(date) == 1L) {
-    if (nchar(date) == 7L && grepl("-", date)) {
-      date <- seq(as.Date(sprintf(c("%s-01"), date)), length.out = 2L, by = "1 month")
-
-      date[2] <- date[2] - 1
-    } else {
-      if (nchar(date) == 4L && !is.na(as.integer(date))) {
-      date <- sprintf(c("%s-01-01", "%s-12-31"), date)
-    }
-}
-
-    date <- c(format(min(as.Date(date)), "%FT00:00:00Z"),
-      format(max(as.Date(date)), "%FT23:59:59Z"))
-  } else {
-    date <- range(as.POSIXct(date, tz = "UTC"))
-  }
-
-  date <- paste(date, collapse = "/")
+  date <- .datehandler(date)
   collections <- paste(collections, collapse = ",")
   asset <- paste(asset, collapse = ",")
   base <- sprintf("%s?collections=%s&bbox=%s&datetime=%s", provider, collections, bb, date)

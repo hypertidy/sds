@@ -6,7 +6,7 @@
 \usage{
 stacit(
   extent,
-  date = Sys.Date() - 1,
+  date = "",
   collections = "sentinel-2-c1-l2a",
   provider = c("https://earth-search.aws.element84.com/v1/search",
     "https://planetarycomputer.microsoft.com/api/stac/v1/search"),

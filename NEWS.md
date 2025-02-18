@@ -1,5 +1,7 @@
 # sds dev
 
+* Added GEBCO 2024.
+*
 * Now more robust handling of date inputs for stacit(). 
 
 * New source `usgs_seamless()` elevation from the US. 

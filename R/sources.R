@@ -93,8 +93,17 @@ srtm15 <- function() "/vsicurl/https://opentopography.s3.sdsc.edu/raster/SRTM15P
 #' @examples
 #' gebco()
 gebco <- function(vsi = TRUE) {
-  gebco23(vsi = vsi)
+  gebco24(vsi = vsi)
 }
+
+#' @name gebco
+#' @export
+gebco24 <- function(vsi = TRUE) {
+  url <- "https://projects.pawsey.org.au/idea-gebco-tif/GEBCO_2024.tif"
+  if (vsi) url <- file.path("/vsicurl", url)
+  url
+}
+
 
 #' @name gebco
 #' @export

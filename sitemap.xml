@@ -10,12 +10,13 @@
 <url><loc>/reference/dea_250m_dem.html</loc></url>
 <url><loc>/reference/dsn-sources.html</loc></url>
 <url><loc>/reference/gebco.html</loc></url>
+<url><loc>/reference/ghrsst.html</loc></url>
 <url><loc>/reference/ibcso.html</loc></url>
 <url><loc>/reference/index.html</loc></url>
 <url><loc>/reference/list_address.html</loc></url>
 <url><loc>/reference/list_parcel.html</loc></url>
 <url><loc>/reference/mpc.html</loc></url>
-<url><loc>/reference/mursst.html</loc></url>
+<url><loc>/reference/mursst_zarr.html</loc></url>
 <url><loc>/reference/nsidc_seaice.html</loc></url>
 <url><loc>/reference/rema.html</loc></url>
 <url><loc>/reference/sds-package.html</loc></url>

@@ -236,7 +236,7 @@ tas_dem <- function(vsicurl = TRUE) {
 #' the cloud. It's really big, daily netcdf blended/observation/model data on a
 #' 36000x18000 grid, a regular grid in -180, 180, -90, 90.
 #'
-#'
+#' This zarr and every other one I've found is unuseably out of date.
 #' It seems like this source doesn't go past "2020-01-21" or band 6443, don't know why that is.
 #'
 #'
@@ -248,8 +248,8 @@ tas_dem <- function(vsicurl = TRUE) {
 #' @examples
 #' mursst()
 #' mursst_time("2019-10-08")
-mursst <- function(band = 0) {
-  Sys.setenv("AWS_NO_SIGN_REQUEST"="yes")
+mursst_zarr <- function(band = 0) {
+
   sprintf("ZARR:\"/vsis3/mur-sst/zarr\":/analysed_sst:%i", band)
 }
 
@@ -258,7 +258,7 @@ mursst <- function(band = 0) {
 #' @name mursst
 #' @export
 mursst_time <- function(time = NULL) {
-  Sys.setenv("AWS_NO_SIGN_REQUEST"="yes")
+
   epoch <- as.Date("2002-06-01")
   if (!is.null(time)) {
     time <- as.Date(as.POSIXct(time))
@@ -272,6 +272,23 @@ mursst_time <- function(time = NULL) {
   mursst(band)
 }
 
+#' GHRSST files, GeoTIFFs on source.coop
+#'
+#' @return dataframe of source,date
+#' @export
+#'
+#' @examples
+#' files <- ghrsst()
+#' tail(files$source)
+ghrsst <- function(vsi = TRUE) {
+ date <- seq(as.Date("2002-06-01"), Sys.Date() - 2, by = 1)
+  template <- template <- "https://data.source.coop/ausantarctic/ghrsst-mur-v2/%s/%s090000-JPL-L4_GHRSST-SSTfnd-MUR-GLOB-v02.0-fv04.1_analysed_sst.tif"
+  ymd <- format(date, '%Y/%m/%d')
+  ymd2 <- format(date, '%Y%m%d')
+  d <- tibble::tibble(source = sprintf(template, ymd, ymd2), date = date)
+  if (vsi) d$source <- sprintf("/vsicurl/%s", d$source)
+  d
+}
 
 usgs_hydro <- function() {
   "WMTS:https://basemap.nationalmap.gov/arcgis/rest/services/USGSHydroCached/MapServer/WMTS/1.0.0/WMTSCapabilities.xml,layer=USGSHydroCached,tilematrixset=default028mm"

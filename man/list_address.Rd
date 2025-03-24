@@ -14,8 +14,6 @@ Title
 }
 \examples{
 x <- list_address(c(2862, "LYELL",  "HAYES"))
-x <- list_address(c(74, "HILLBOROUGH",  "SOUTH HOBART"))
-
 vals <- jsonlite::fromJSON(readr::read_file ( x), simplifyVector = F)$features[[1]]$attributes
 plot(v <- vect(list_parcel(vals$PID)))
 Sys.setenv("GDAL_DISABLE_READDIR_ON_OPEN"="TRUE")

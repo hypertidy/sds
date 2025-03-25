@@ -378,3 +378,32 @@ dea_250m_dem <- function(vsi = TRUE) {
   if (vsi) u <- sprintf("/vsicurl/%s", u)
   u
 }
+
+#' @name gedtm30
+#' @export
+gedtm30_sources <- function() {
+  read.csv("https://raw.githubusercontent.com/openlandmap/GEDTM30/refs/heads/main/metadata/cog_list.csv")
+
+}
+#' GEDTM30 global 1-arc-second (~30m) Digital Terrain Model (DTM)
+#'
+#' @param varname defaults to 'legendtm_rf_30m' (the elevation)
+#' @param vsi  include /vsicurl prefix
+#'
+#' @URL https://github.com/openlandmap/GEDTM30/
+#' @return for 'gedtm30_sources' dataframe of details about the files, for 'gedtm30' one of the variables source urls
+#' @export
+#'
+#' @examples
+#' gedtm30("hillshade_edtm")
+gedtm30 <- function(varname = "legendtm_rf_30m", vsi = TRUE) {
+d <- gedtm30_sources()
+d$varname <- c("legendtm_rf_30m", "", "dfme_edtm", "geomorphon_edtm", "hillshade_edtm",
+                 "ls.factor_edtm", "maxic_edtm", "minic_edtm", "neg.openness_edtm",
+                 "pos.openness_edtm", "pro.curv_edtm", "ring.curv_edtm", "shpindx_edtm",
+                 "slope.in.degree_edtm", "spec.catch_edtm", "ssdon_edtm", "tan.curv_edtm",
+                 "twi_edtm")
+ out <- d[d$varname == varname[1], "url", drop = TRUE]
+ if (vsi) out <- sprintf("/vsicurl/%s", out)
+ out
+}

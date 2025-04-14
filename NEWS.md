@@ -1,5 +1,7 @@
 # sds dev
 
+* Add Swiss topo as a GTI file. 
+
 * Added GHRSST COGs
 . 
 

@@ -5,6 +5,14 @@
 
 https://www.swisstopo.admin.ch/en/height-model-swissalti3d#Additional-information
 
+For GDAL we can use this description to open the data as a raster mosaic: 
+
+```
+GTI:/vsicurl/https://github.com/hypertidy/sds/raw/refs/heads/main/data-raw/swisstopo.gti.gpkg
+```
+
+(drop the "GTI:" to use as a Geopackage vector layer, and download the file for local use it's a single file)
+
 This is a tile index in GTI GDAL format, a vector layer of the polygon bbox of each of the GeoTIFF tiles with metadata to fully described the mosaic. 
 
 The index file itself is 14Mb, Geopackage is uncompressed. 

@@ -1,11 +1,13 @@
 # swiss topo GDAL tile index
 
-swisstopo.gti.gpkg is a Geopackage vector polygon index of the Swisstopo from
+`swisstopo.gti.gpkg` is a Geopackage vector polygon index of the Swisstopo from
 
 
 https://www.swisstopo.admin.ch/en/height-model-swissalti3d#Additional-information
 
 This is a tile index in GTI GDAL format, a vector layer of the polygon bbox of each of the GeoTIFF tiles with metadata to fully described the mosaic. 
+
+The index file itself is 14Mb, Geopackage is uncompressed. 
 
 in python with xarray use
 

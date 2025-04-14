@@ -21,20 +21,20 @@ library(terra)
 v <- vect(as.character(wk::as_wkt(wk::rct(files$xmin, files$ymin, files$xmax, files$ymax))), crs =prj)
 v$location <- files$location
 
-tfile <- "inst/extdata/_tempswisstopo.gpkg"
+tfile <- "data-raw/_tempswisstopo.gpkg"
 writeVector(v, tfile)
 epsg <- gdalraster::srs_find_epsg(prj)
 nodata <- info$bands$noDataValue[1]
 dtype <- info$bands$type
 
-cmd <- sprintf("ogr2ogr inst/extdata/swisstopo.gti.gpkg %s  -mo DATA_TYPE=%s -mo NODATA=%s -mo SRS=%s -mo BAND_COUNT=1 -mo RESX=%f -mo RESY=%f -mo MINX=%f -mo MINY=%f -mo MAXX=%f -mo MAXY=%f  ",
+cmd <- sprintf("ogr2ogr data-raw/swisstopo.gti.gpkg %s  -mo DATA_TYPE=%s -mo NODATA=%s -mo SRS=%s -mo BAND_COUNT=1 -mo RESX=%f -mo RESY=%f -mo MINX=%f -mo MINY=%f -mo MAXX=%f -mo MAXY=%f  ",
                tfile, dtype, nodata, epsg, res[1], res[2],
                min(files$xmin), min(files$ymin), max(files$xmax), max(files$ymax))
 system(cmd)
 
 unlink(tfile)
 
-r <- rast("GTI:inst/extdata/swisstopo.gti.gpkg")
+r <- rast("GTI:data-raw/swisstopo.gti.gpkg")
 
 plot(crop(r, ext(c(2615548L, 2618548L, 1090170L, 1093170L))))
 

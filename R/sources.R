@@ -281,7 +281,7 @@ mursst_time <- function(time = NULL) {
 #' files <- ghrsst()
 #' tail(files$source)
 ghrsst <- function(vsi = TRUE) {
- date <- seq(as.Date("2002-06-01"), Sys.Date() - 2, by = 1)
+ date <- as.POSIXct(seq(as.Date("2002-06-01"), Sys.Date() - 2, by = 1), tz = "UTC")
   template <- template <- "https://data.source.coop/ausantarctic/ghrsst-mur-v2/%s/%s090000-JPL-L4_GHRSST-SSTfnd-MUR-GLOB-v02.0-fv04.1_analysed_sst.tif"
   ymd <- format(date, '%Y/%m/%d')
   ymd2 <- format(date, '%Y%m%d')

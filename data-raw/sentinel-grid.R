@@ -29,11 +29,38 @@ arrow::write_parquet(grid, "inst/extdata/sentinel_grid.parquet")
 sentinel_grid <- grid
 usethis::use_data(sentinel_grid)
 
-
+if (FALSE) {
 ## create lonlat versions
-# l <- split(sentinel_grid, sentinel_grid$zone)
-# fun <- function(x) {
-#   x <- wk::rct(x$xmin, x$ymin, x$xmax, x$ymax, crs = x$crs[1])
-#   geos::geos_
-# }
-# plot(fun(l[[4]]))
+land <- sentinel_grid[sentinel_grid$land, ]
+l <- split(land, land$zone)
+box0 <- as.matrix(land[c("xmin", "xmax", "ymin", "ymax")])
+ol <- vector("list", nrow(box0))
+for (i in seq_len(nrow(box0))) {
+  ol[[i]] <- reproj::reproj_extent(box0[i, ], target = "EPSG:4326", source = land$crs[i])
+}
+llbox <- do.call(rbind, ol)
+fun <- function(x) {
+  out <- wk::rct(x$xmin, x$ymin, x$xmax, x$ymax, crs = x$crs[1])
+
+  out <- geos::geos_densify(out, 100)
+  trans <- PROJ::proj_trans_create(x$crs[1], "EPSG:4326")
+  wk::wk_transform(out, trans)
+
+}
+
+trans <- PROJ::proj_trans_create("EPSG:4326", (prj <- "+proj=laea +lat_0=90"))
+
+## all
+x_ll <- do.call(c, lapply(l, fun))
+iid_ll <- geos::geos_strtree_query(geos_strtree(x_ll))
+x_xy <- wk::wk_transform(x_ll, trans)
+plot(x_xy)
+m <- reproj::reproj_xy(do.call(cbind, maps::map(plot = F)[1:2]), prj, source = "EPSG:4326")
+lines(m, col = "hotpink")
+
+tree <- geos::geos_strtree(x_xy)
+iid <- geos::geos_strtree_query(tree, x_xy)
+plot(x_xy[iid[[1]]])
+plot(x_xy[1], add = TRUE, col = "red")
+land[iid[[1]], ]
+}

@@ -24,6 +24,33 @@ grid$zone <- substr(grid$tile, 1, 2)
 grid$latband <- substr(grid$tile, 3, 3)
 grid$lonband <- substr(grid$tile, 4, 5)
 
+l <- vector("list", length(unique(grid$crs)))
+for (i  in seq_along(unique(grid$crs))) {
+
+  idx <- unique(grid$crs)[i] == grid$crs
+  x <- grid[idx, ]
+
+  xymin <- reproj::reproj_xy(cbind(x$xmin, x$ymin), "EPSG:4326", source = unique(grid$crs)[i])
+  xymax <- reproj::reproj_xy(cbind(x$xmax, x$ymax), "EPSG:4326", source = unique(grid$crs)[i])
+
+  bad <- xymax[,1] < xymin[,1]
+
+  xymax[bad, 1] <- xymax[bad, 1] + 360
+
+
+  x$ll_xmin <- xymin[,1]
+  x$ll_ymin <- xymin[,2]
+  x$ll_xmax <- xymax[,1]
+  x$ll_ymax <- xymax[,2]
+  x$antim_wrap <- bad
+  l[[i]] <- x
+}
+grid <- do.call(rbind, l)
+vaster::plot_extent(grid[grid$land, c("ll_xmin", "ll_xmax", "ll_ymin", "ll_ymax")])
+
+
+## redundant on latband but helpful
+grid$hemisphere <- c("south", "north")[(grid$latband > "N") + 1L]
 grid$geometry <- NULL
 grid$epsg <- NULL
 grid$utm_bounds <- NULL
@@ -32,14 +59,43 @@ grid$tile <- NULL
 
 arrow::write_parquet(grid, "inst/extdata/sentinel_grid.parquet")
 sentinel_grid <- grid
-usethis::use_data(sentinel_grid)
+usethis::use_data(sentinel_grid, overwrite = T)
 
 if (FALSE) {
-## create lonlat versions
-land <- sentinel_grid[sentinel_grid$land, ]
-land$zone_by_hemi <- paste0(land$zone, land$latband < "N")
-l <- split(land, land$zone_by_hemi)
-box0 <- as.matrix(land[c("xmin", "xmax", "ymin", "ymax")])
+  ## create wk objects, if crs is input we unproject (not recommended without care)
+  # fun <- function(xmin, xmax, ymin, ymax, crs = NULL, densify = NULL, wrap = FALSE) {
+  #   #print(unique(x$crs))
+  #   out <- wk::rct(xmin, ymin, xmax, ymax)
+  #   if (!is.null(densify)) {
+  #     if (densify[1] < 10) stop("densify is < 10 are you sure!!")
+  #     out <- geos::geos_densify(out, densify[1])
+  #   }
+  #   if (!is.null(crs)) {
+  #     trans <- PROJ::proj_trans_create(crs[1], "EPSG:4326")
+  #     out <- wk::wk_transform(out, trans)
+  #     wk::wk_crs(out) <- "EPSG:4326"
+  #     if (any(wrap)) {
+  #       coords <- wk::wk_coords(out[wrap])
+  #       browser()
+  #     }
+  #   }
+  #   out
+  # }
+
+  library(dplyr)
+## create lonlat versions, and check all the stuff (we now above have sensible xmin,xmax,ymin,ymax and ll_ versions for each that span +180)
+# d <-   dplyr::filter(sentinel_grid, land) |>
+#     group_by(zone, hemisphere) |>
+#     mutate(geometry = fun(xmin, xmax, ymin, ymax, crs[1], wrap = antim_wrap))
+# plot(d$geometry)
+# allutm <- fun0(land)
+# utm_a <- geos::geos_area(allutm)
+# range(utm_a)
+# sf_a <- sf::st_area(sf::st_as_sf(x_ll))
+# range(sf_a)
+
+
+#box0 <- as.matrix(land[c("xmin", "xmax", "ymin", "ymax")])
 ## this is way too slow
 # ol <- vector("list", nrow(box0))
 # for (i in seq_len(nrow(box0))) {
@@ -47,21 +103,12 @@ box0 <- as.matrix(land[c("xmin", "xmax", "ymin", "ymax")])
 # }
 # llbox <- do.call(rbind, ol)
 #saveRDS(llbox, "data-raw/llbox.rds")
-llbox <- readRDS("data-raw/llbox.rds")
-fun <- function(x) {
-  #print(unique(x$crs))
-  out <- wk::rct(x$xmin, x$ymin, x$xmax, x$ymax, crs = x$crs[1])
-
-  out <- geos::geos_densify(out, 100)
-  trans <- PROJ::proj_trans_create(x$crs[1], "EPSG:4326")
-  wk::wk_transform(out, trans)
-
-}
-fun(l[[1]])
-trans <- PROJ::proj_trans_create("EPSG:4326", (prj <- "+proj=stere +lat_0=90"))
 
 ## all
 x_ll <- do.call(c, lapply(l, fun))
+
+trans <- PROJ::proj_trans_create("EPSG:4326", (prj <- "+proj=stere +lat_0=90"))
+
 iid_ll <- geos::geos_strtree_query(geos::geos_strtree(x_ll), x_ll)
 x_xy <- wk::wk_transform(x_ll, trans)
 f <- 1e7
@@ -75,5 +122,10 @@ iid <- geos::geos_strtree_query(tree, x_xy)
 plot(x_xy[iid[[1]]])
 plot(x_xy[1], add = TRUE, col = "red")
 land[iid[[1]], ]
-}
+
+
+## which tiles does the 17673 tile touch
+iid_ll[[30]]
+plot(x_ll[iid_ll[[2873]]])
+ }
 

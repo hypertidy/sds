@@ -379,6 +379,16 @@ dea_250m_dem <- function(vsi = TRUE) {
   u
 }
 
+#' GEDTDM global 1-arc second (30m) DEM
+#' 
+#' Global Ensemble Digital Terrain Model 30m (GEDTM30)
+#' https://zenodo.org/records/15490367
+#' @export
+#' @examples
+#' gedtm30()
+gedtm30 <- function() {
+  "/vsicurl/https://s3.opengeohub.org/global/edtm/legendtm_rf_30m_m_s_20000101_20231231_go_epsg.4326_v20250130.tif"
+}
 #' @name gedtm30
 #' @export
 gedtm30_sources <- function() {
@@ -391,12 +401,12 @@ gedtm30_sources <- function() {
 #' @param vsi  include /vsicurl prefix
 #'
 #' @URL https://github.com/openlandmap/GEDTM30/
-#' @return for 'gedtm30_sources' dataframe of details about the files, for 'gedtm30' one of the variables source urls
+#' @return for 'gedtm30_sources' dataframe of details about the files, for 'gedtm30_model' one of the variables source urls
 #' @export
-#'
+#' @seealso `gedtm30()` which returns a single cog url just for the DEM
 #' @examples
-#' gedtm30("hillshade_edtm")
-gedtm30 <- function(varname = "legendtm_rf_30m", vsi = TRUE) {
+#' gedtm30_model("hillshade_edtm")
+gedtm30_model <- function(varname = "legendtm_rf_30m", vsi = TRUE) {
 d <- gedtm30_sources()
 d$varname <- c("legendtm_rf_30m", "", "dfme_edtm", "geomorphon_edtm", "hillshade_edtm",
                  "ls.factor_edtm", "maxic_edtm", "minic_edtm", "neg.openness_edtm",

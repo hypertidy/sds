@@ -24,7 +24,7 @@ nsidc_seaice <- function(date, hemisphere = c("south", "north"),
   HEMI <- match.arg(hemisphere)
   TEMPORAL <- match.arg(temporal)
   if (missing(date)) {
-    offset <- if(temporal == "daily") 7 else 31
+    offset <- if(TEMPORAL == "daily") 7 else 31
     date <- Sys.Date() - offset
   }
   date <- as.POSIXct(date, tz = "UTC")

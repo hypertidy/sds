@@ -24,22 +24,35 @@ nsidc_seaice <- function(date, hemisphere = c("south", "north"),
   HEMI <- match.arg(hemisphere)
   TEMPORAL <- match.arg(temporal)
   if (missing(date)) {
-    date <- Sys.Date() - 7
+    offset <- if(temporal == "daily") 7 else 31
+    date <- Sys.Date() - offset
   }
   date <- as.POSIXct(date, tz = "UTC")
   YEAR <- format(date, "%Y")
   MON_MON <- format(date, "%m_%b")
+  VARNAME <- match.arg(varname)
+  if (TEMPORAL == "daily") {
   noaabase <- sprintf("https://noaadata.apps.nsidc.org/NOAA/G02135/%s/%s/geotiff/%s/%s",
                       HEMI, TEMPORAL, YEAR, MON_MON)
-
-
-  VARNAME <- match.arg(varname)
   noaafile <- sprintf("%s_%s_%s_v3.0.tif",
                       toupper(substr(HEMI, 1, 1)),
                       format(date, "%Y%m%d"),
                       VARNAME)
 
-  mindate <- as.POSIXct("1978-10-26", tz = "UTC")
+
+  } else {
+    noaabase <- sprintf("https://noaadata.apps.nsidc.org/NOAA/G02135/%s/%s/geotiff/%s",
+                        HEMI, TEMPORAL, MON_MON)
+    noaafile <- sprintf("%s_%s_%s_v3.0.tif",
+                        toupper(substr(HEMI, 1, 1)),
+                        format(date, "%Y%m"),
+                        VARNAME)
+
+
+
+}
+
+
 
   urlbase <- sprintf("%s/%s", noaabase, noaafile)
 

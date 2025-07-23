@@ -1,5 +1,7 @@
 # sds dev
 
+* Fixed nsidc_seaice() for monthly. 
+
 * Add Swiss topo as a GTI file. 
 
 * Added GHRSST COGs

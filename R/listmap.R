@@ -24,17 +24,18 @@ where <- sprintf("where=(ST_NO_FROM=%i AND STREET='%s'  AND LOCALITY='%s')&outFi
 gsub(" ", "%20", paste0(base, where))
 }
 
-#' Title
-#'
-#' @param PID
-#'
-#' @return
-#' @export
-#'
-#' @examples
+
 list_parcel <- function(PID) {
   sprintf("ESRIJSON:%s?where=(PID=%i)&f=pjson&outFields=OBJECTID",
           "https://services.thelist.tas.gov.au/arcgis/rest/services/Public/OpenDataWFS/MapServer/14/query",
           PID)
 }
-
+#' Cadastral parcel source
+#'
+#' @return string
+#' @export
+#'
+#' @examples
+list_parcel_shp <- function() {
+  "/vsizip//vsicurl/listdata.thelist.tas.gov.au/opendata/data/LIST_PARCELS_HOBART.zip/list_parcels_hobart.shp"
+}

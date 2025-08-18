@@ -2,21 +2,17 @@
 % Please edit documentation in R/sources.R
 \name{gedtm30}
 \alias{gedtm30}
-\title{GEDTM30 global 1-arc-second (~30m) Digital Terrain Model (DTM)}
+\alias{gedtm30_sources}
+\title{GEDTDM global 1-arc second (30m) DEM}
 \usage{
-gedtm30(varname = "legendtm_rf_30m", vsi = TRUE)
-}
-\arguments{
-\item{varname}{defaults to 'legendtm_rf_30m' (the elevation)}
+gedtm30()
 
-\item{vsi}{include /vsicurl prefix}
-}
-\value{
-for 'gedtm30_sources' dataframe of details about the files, for 'gedtm30' one of the variables source urls
+gedtm30_sources()
 }
 \description{
-GEDTM30 global 1-arc-second (~30m) Digital Terrain Model (DTM)
+Global Ensemble Digital Terrain Model 30m (GEDTM30)
+https://zenodo.org/records/15490367
 }
 \examples{
-gedtm30("hillshade_edtm")
+gedtm30()
 }

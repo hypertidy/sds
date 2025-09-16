@@ -1,6 +1,6 @@
 Package: sds
 Title: Spatial Data Sources
-Version: 0.0.1.9009
+Version: 0.0.1.9010
 Authors@R: 
     person("Michael", "Sumner", , "mdsumner@gmail.com", role = c("aut", "cre"))
 Description: Functions for descriptions of spatial data sources that can be read

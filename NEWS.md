@@ -1,5 +1,8 @@
 # sds dev
 
+* Fast CGAZ. 
+
+
 * Fixed nsidc_seaice() for monthly. 
 
 * Add Swiss topo as a GTI file. 

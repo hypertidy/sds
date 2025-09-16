@@ -18,7 +18,7 @@ with GDAL, for the names or codes of countries."><!-- mathjax --><script src="ht
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.9009</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.9010</span>
       </span>
     </div>
 
@@ -45,7 +45,7 @@ with GDAL, for the names or codes of countries."><!-- mathjax --><script src="ht
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>the geoBoundaries countries</h1>
-    <small class="dont-index">Source: <a href="https://github.com/hypertidy/sds/blob/main/R/sources.R" class="external-link"><code>R/sources.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/hypertidy/sds/blob/main/R/cgaz.R" class="external-link"><code>R/cgaz.R</code></a></small>
     <div class="hidden name"><code>CGAZ.Rd</code></div>
     </div>
 
@@ -55,7 +55,7 @@ with GDAL, for the names or codes of countries.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">CGAZ</span><span class="op">(</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">CGAZ</span><span class="op">(</span>old <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">CGAZ_sql</span><span class="op">(</span><span class="va">codes</span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -64,7 +64,11 @@ with GDAL, for the names or codes of countries.</p>
     <h2>Arguments</h2>
 
 
-<dl><dt id="arg-codes">codes<a class="anchor" aria-label="anchor" href="#arg-codes"></a></dt>
+<dl><dt id="arg-old">old<a class="anchor" aria-label="anchor" href="#arg-old"></a></dt>
+<dd><p>logical, return the old slow zipped shapefile or the new Parquet copy</p></dd>
+
+
+<dt id="arg-codes">codes<a class="anchor" aria-label="anchor" href="#arg-codes"></a></dt>
 <dd><p>a list of iso3 country codes, or country names (this is a bit sketchy)</p></dd>
 
 </dl></div>

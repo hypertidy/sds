@@ -1,5 +1,7 @@
 # sds dev
 
+* Accept MGRS code (precision 0) for stacit extent. 
+
 * Fast CGAZ. 
 
 

@@ -57,11 +57,16 @@
 
 ## input x is xmin,xmax,ymin,ymax, output is bbox xmin,ymin,xmax,ymax (and possibly repeated 2x to split on antimeridia)
 .extenthandler <- function(x) {
+  if (is.character(x)) {
+    ## assume it's a GZD identifier MGRS-{GZD}{100km square}
+    return(sprintf('query={"grid:code":{"eq":"MGRS-%s"}}', x))
+  }
+
   if (x[2] > 180) {
     bb <- c(paste0(c(x[1], x[3], 180, x[4]), collapse = ","),
             paste0(c(-180, x[3], x[2] - 360, x[4]), collapse = ","))
   } else {
     bb <- paste0(x[c(1, 3, 2, 4)], collapse = ",")
   }
-  bb
+  sprintf("bbox=%s", bb)
 }

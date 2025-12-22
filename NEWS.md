@@ -1,5 +1,7 @@
 # sds dev
 
+* GEDTM sources list is a dog's breakfast so have removed for now. 
+
 * Western anti-meridian queries are now handled (Issue #12). 
 
 * Accept MGRS code (precision 0) for stacit extent. 

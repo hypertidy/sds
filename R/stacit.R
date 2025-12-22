@@ -36,7 +36,6 @@
 #'   Default is `"sentinel-2-c1-l2a"` (Sentinel-2 Cloud-Optimized GeoTIFFs).
 #' @param provider character; base URL of the STAC API search endpoint.
 #'   Default uses Element 84's Earth Search. Also supports Microsoft Planetary Computer.
-#' @param asset character; asset key(s) to include. Default `"visual"` for RGB composite.
 #' @param gdal_stacit logical; if `TRUE`, return a GDAL STACIT driver DSN string
 #'   instead of a URL. Default `FALSE`.
 #' @param limit integer; maximum number of items to return per query. Default 1000.
@@ -76,7 +75,6 @@
 stacit <- function(extent, date = "", collections = "sentinel-2-c1-l2a",
                    provider = c("https://earth-search.aws.element84.com/v1/search",
                                 "https://planetarycomputer.microsoft.com/api/stac/v1/search"),
-                   asset = c("visual"),
                    gdal_stacit = FALSE,
                    limit = 1000) {
   provider <-  provider[1L]
@@ -98,7 +96,7 @@ stacit <- function(extent, date = "", collections = "sentinel-2-c1-l2a",
 
   date <- .datehandler(date)
   collections <- paste(collections, collapse = ",")
-  asset <- paste(asset, collapse = ",")
+
   base <- sprintf("%s?collections=%s&%s&datetime=%s", provider, collections, bb, date)
 
   if (gdal_stacit) {

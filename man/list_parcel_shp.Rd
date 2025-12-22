@@ -7,8 +7,11 @@
 list_parcel_shp()
 }
 \value{
-string
+string URI for List shapefile
 }
 \description{
 Cadastral parcel source
+}
+\examples{
+list_parcel_shp()  ## read with terra::vect( ) or new(gdalraster::GDALVector, )
 }

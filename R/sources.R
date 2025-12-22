@@ -197,7 +197,7 @@ tas_dem <- function(vsicurl = TRUE) {
 #' This zarr and every other one I've found is unuseably out of date.
 #' It seems like this source doesn't go past "2020-01-21" or band 6443, don't know why that is.
 #'
-#'
+#' @name mursst
 #' @param band a band number (defaults to 0, which is 2002-06-01)
 #'
 #' @return a string, a dsn for Zarr MURSST
@@ -207,7 +207,6 @@ tas_dem <- function(vsicurl = TRUE) {
 #' mursst()
 #' mursst_time("2019-10-08")
 mursst_zarr <- function(band = 0) {
-
   sprintf("ZARR:\"/vsis3/mur-sst/zarr\":/analysed_sst:%i", band)
 }
 
@@ -337,41 +336,41 @@ dea_250m_dem <- function(vsi = TRUE) {
   u
 }
 
-#' GEDTDM global 1-arc second (30m) DEM
+#' #' GEDTDM global 1-arc second (30m) DEM
+#' #'
+#' #' Global Ensemble Digital Terrain Model 30m (GEDTM30)
+#' #' https://zenodo.org/records/15490367
+#' #' @export
+#' #' @examples
+#' #' gedtm30()
+#' gedtm30 <- function() {
+#'   "/vsicurl/https://s3.opengeohub.org/global/edtm/legendtm_rf_30m_m_s_20000101_20231231_go_epsg.4326_v20250130.tif"
+#' }
+#' #' @name gedtm30
+#' #' @export
+#' gedtm30_sources <- function() {
+#'   readr::read_csv("https://raw.githubusercontent.com/openlandmap/GEDTM30/refs/heads/main/metadata/cog_list.csv")
 #'
-#' Global Ensemble Digital Terrain Model 30m (GEDTM30)
-#' https://zenodo.org/records/15490367
-#' @export
-#' @examples
-#' gedtm30()
-gedtm30 <- function() {
-  "/vsicurl/https://s3.opengeohub.org/global/edtm/legendtm_rf_30m_m_s_20000101_20231231_go_epsg.4326_v20250130.tif"
-}
-#' @name gedtm30
-#' @export
-gedtm30_sources <- function() {
-  read.csv("https://raw.githubusercontent.com/openlandmap/GEDTM30/refs/heads/main/metadata/cog_list.csv")
-
-}
-#' GEDTM30 global 1-arc-second (~30m) Digital Terrain Model (DTM)
-#'
-#' @param varname defaults to 'legendtm_rf_30m' (the elevation)
-#' @param vsi  include /vsicurl prefix
-#'
-#' @URL https://github.com/openlandmap/GEDTM30/
-#' @return for 'gedtm30_sources' dataframe of details about the files, for 'gedtm30_model' one of the variables source urls
-#' @export
-#' @seealso `gedtm30()` which returns a single cog url just for the DEM
-#' @examples
-#' gedtm30_model("hillshade_edtm")
-gedtm30_model <- function(varname = "legendtm_rf_30m", vsi = TRUE) {
-d <- gedtm30_sources()
-d$varname <- c("legendtm_rf_30m", "", "dfme_edtm", "geomorphon_edtm", "hillshade_edtm",
-                 "ls.factor_edtm", "maxic_edtm", "minic_edtm", "neg.openness_edtm",
-                 "pos.openness_edtm", "pro.curv_edtm", "ring.curv_edtm", "shpindx_edtm",
-                 "slope.in.degree_edtm", "spec.catch_edtm", "ssdon_edtm", "tan.curv_edtm",
-                 "twi_edtm")
- out <- d[d$varname == varname[1], "url", drop = TRUE]
- if (vsi) out <- sprintf("/vsicurl/%s", out)
- out
-}
+#' }
+#' #' GEDTM30 global 1-arc-second (~30m) Digital Terrain Model (DTM)
+#' #'
+#' #' @param varname defaults to 'legendtm_rf_30m' (the elevation)
+#' #' @param vsi  include /vsicurl prefix
+#' #'
+#' #' @references https://github.com/openlandmap/GEDTM30/
+#' #' @return for 'gedtm30_sources' dataframe of details about the files, for 'gedtm30_model' one of the variables source urls
+#' #' @export
+#' #' @seealso `gedtm30()` which returns a single cog url just for the DEM
+#' #' @examples
+#' #' gedtm30_model("hillshade_edtm")
+#' gedtm30_model <- function(varname = "legendtm_rf_30m", vsi = TRUE) {
+#' d <- gedtm30_sources()
+#' d$varname <- c("legendtm_rf_30m", "", "dfme_edtm", "geomorphon_edtm", "hillshade_edtm",
+#'                  "ls.factor_edtm", "maxic_edtm", "minic_edtm", "neg.openness_edtm",
+#'                  "pos.openness_edtm", "pro.curv_edtm", "ring.curv_edtm", "shpindx_edtm",
+#'                  "slope.in.degree_edtm", "spec.catch_edtm", "ssdon_edtm", "tan.curv_edtm",
+#'                  "twi_edtm")
+#'  out <- d[d$varname == varname[1], "url", drop = TRUE]
+#'  if (vsi) out <- sprintf("/vsicurl/%s", out)
+#'  out
+#' }

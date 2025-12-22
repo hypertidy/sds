@@ -1,5 +1,7 @@
 # sds dev
 
+* Western anti-meridian queries are now handled (Issue #12). 
+
 * Accept MGRS code (precision 0) for stacit extent. 
 
 * Fast CGAZ. 

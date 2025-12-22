@@ -61,12 +61,18 @@
     ## assume it's a GZD identifier MGRS-{GZD}{100km square}
     return(sprintf('query={"grid:code":{"eq":"MGRS-%s"}}', x))
   }
-
-  if (x[2] > 180) {
-    bb <- c(paste0(c(x[1], x[3], 180, x[4]), collapse = ","),
+  if (diff(x[1:2]) <= 0) stop("extent must be a valid xmin,xmax, ymin,ymax vector (values <-180 and > 180 are allowed for xmin,xmax for across anti-meridian queries")
+  if (diff(x[3:4]) <= 0) stop("extent must be a valid xmin,xmax, ymin,ymax vector, with latitude values between -90,90")
+  if ((x[3] < -90)  || (x[4] > 90)) warning("latitude ymin,ymax values outside of -90,90 range")
+  if (x[2L] > 180) {
+    bb <- c(paste0(c(x[1L], x[3L], 180, x[4L]), collapse = ","),
             paste0(c(-180, x[3], x[2] - 360, x[4]), collapse = ","))
+  } else if (x[1] < -180) {
+    bb <- c(paste0(c(-180, x[3L], x[2L], x[4L]), collapse = ","),
+            paste0(c(x[1L] + 360, x[3], 180, x[4L]), collapse = ","))
   } else {
-    bb <- paste0(x[c(1, 3, 2, 4)], collapse = ",")
+    bb <- paste0(x[c(1L, 3L, 2L, 4L)], collapse = ",")
   }
+
   sprintf("bbox=%s", bb)
 }

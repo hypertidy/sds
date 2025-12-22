@@ -19,7 +19,7 @@ the cloud. It's really big, daily netcdf blended/observation/model data on a
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.9007</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.9012</span>
       </span>
     </div>
 
@@ -57,7 +57,7 @@ the cloud. It's really big, daily netcdf blended/observation/model data on a
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">mursst</span><span class="op">(</span>band <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">mursst_zarr</span><span class="op">(</span>band <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">mursst_time</span><span class="op">(</span>time <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -80,15 +80,16 @@ the cloud. It's really big, daily netcdf blended/observation/model data on a
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>It seems like this source doesn't go past "2020-01-21" or band 6443, don't know why that is.</p>
+    <p>This zarr and every other one I've found is unuseably out of date.
+It seems like this source doesn't go past "2020-01-21" or band 6443, don't know why that is.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">mursst</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZARR:\"/vsis3/mur-sst/zarr\":/analysed_sst:0"</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in mursst():</span> could not find function "mursst"</span>
 <span class="r-in"><span><span class="fu">mursst_time</span><span class="op">(</span><span class="st">"2019-10-08"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZARR:\"/vsis3/mur-sst/zarr\":/analysed_sst:6338"</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in mursst(band):</span> could not find function "mursst"</span>
 </code></pre></div>
     </div>
   </div>
@@ -103,7 +104,7 @@ the cloud. It's really big, daily netcdf blended/observation/model data on a
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer></div>

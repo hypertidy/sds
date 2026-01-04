@@ -38,7 +38,7 @@
 #'   Default uses Element 84's Earth Search. Also supports Microsoft Planetary Computer.
 #' @param gdal_stacit logical; if `TRUE`, return a GDAL STACIT driver DSN string
 #'   instead of a URL. Default `FALSE`.
-#' @param limit integer; maximum number of items to return per query. Default 1000.
+#' @param limit integer; maximum number of items to return per query. Default 300.
 #'
 #' @return Character vector of STAC search URL(s). Returns multiple URLs when
 #'   the extent crosses the anti-meridian.
@@ -76,7 +76,7 @@ stacit <- function(extent, date = "", collections = "sentinel-2-c1-l2a",
                    provider = c("https://earth-search.aws.element84.com/v1/search",
                                 "https://planetarycomputer.microsoft.com/api/stac/v1/search"),
                    gdal_stacit = FALSE,
-                   limit = 1000) {
+                   limit = 300) {
   provider <-  provider[1L]
   if (missing(extent)) stop("'extent' must be provided, a vector of 'c(xmin, xmax, ymin, ymax)' in longlat coords, or a GZD tile identifier")
 

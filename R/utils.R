@@ -60,6 +60,12 @@
   if (is.character(x)) {
     ## assume it's a GZD identifier MGRS-{GZD}{100km square}
     return(sprintf('query={"grid:code":{"eq":"MGRS-%s"}}', x))
+  #  mgrslist <- sprintf("query={\"grid:code\":{\"in\":[%s]}}",  paste0(c("\"MGRS-04QGH\"", "\"MGRS-55HBC\"", "\"MGRS-55HBD\""), collapse = ","))
+   # mgrslist <- sprintf("query={\"s2:mgrs_tile\":{\"in\":[%s]}}",  paste0(c("\"04QGH\"", "\"55HBC\"", "\"55HBD\""), collapse = ","))
+
+    #mgrslist <- 'filter-lang=cql2-json&filter={"op":"in","args":[{"property":"grid:code"},["MGRS-04QGH","MGRS-55HBC","MGRS-55HBD"]]}'
+    #mgrslist <- "filter-lang=cql2-text&filter=grid:code IN ('MGRS-04QGH','MGRS-55HBC','MGRS-55HBD')"
+    #return(mgrslist)
   }
   if (!is.numeric(x) && length(x) ==4L) stop("'extent' in stacit() must be valid c(xmin, xmax, ymin, ymax) longitude,latitude values")
   if (diff(x[1:2]) <= 0) stop("extent must be a valid c(xmin,xmax, ymin,ymax) vector (values <-180 and > 180 are allowed for xmin,xmax for across anti-meridian queries")

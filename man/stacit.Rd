@@ -16,11 +16,22 @@ stacit(
 )
 }
 \arguments{
+\item{extent}{numeric longlat xmin,xmax,ymin,ymax OR character MGRS code (see details)}
+
+\item{date}{character/Date/POSIXt length 1 or 2 (see details)}
+
 \item{gdal_stacit}{}
 }
 \description{
-Stacit query generator
+STAC url query, as simple as extent and date(time).
+}
+\details{
+Extent can be an 100km grid square MGRS code, or a number extent for longlat.
+
+Date can be a single character "2025", "2025-01", "2025-01-01" or a pair of these for the
+obvious range between dates or implied interval (day, month, year).
 }
 \examples{
 stacit(c(140, 145, -43, -40))
+stacit("43DFD", date = "2025-01")
 }

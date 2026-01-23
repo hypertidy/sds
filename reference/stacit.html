@@ -63,9 +63,8 @@ assembling URL parameters.</p>
 <span>  collections <span class="op">=</span> <span class="st">"sentinel-2-c1-l2a"</span>,</span>
 <span>  provider <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"https://earth-search.aws.element84.com/v1/search"</span>,</span>
 <span>    <span class="st">"https://planetarycomputer.microsoft.com/api/stac/v1/search"</span><span class="op">)</span>,</span>
-<span>  asset <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"visual"</span><span class="op">)</span>,</span>
 <span>  gdal_stacit <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  limit <span class="op">=</span> <span class="fl">1000</span></span>
+<span>  limit <span class="op">=</span> <span class="fl">300</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -94,17 +93,13 @@ Default is <code>"sentinel-2-c1-l2a"</code> (Sentinel-2 Cloud-Optimized GeoTIFFs
 Default uses Element 84's Earth Search. Also supports Microsoft Planetary Computer.</p></dd>
 
 
-<dt id="arg-asset">asset<a class="anchor" aria-label="anchor" href="#arg-asset"></a></dt>
-<dd><p>character; asset key(s) to include. Default <code>"visual"</code> for RGB composite.</p></dd>
-
-
 <dt id="arg-gdal-stacit">gdal_stacit<a class="anchor" aria-label="anchor" href="#arg-gdal-stacit"></a></dt>
 <dd><p>logical; if <code>TRUE</code>, return a GDAL STACIT driver DSN string
 instead of a URL. Default <code>FALSE</code>.</p></dd>
 
 
 <dt id="arg-limit">limit<a class="anchor" aria-label="anchor" href="#arg-limit"></a></dt>
-<dd><p>integer; maximum number of items to return per query. Default 1000.</p></dd>
+<dd><p>integer; maximum number of items to return per query. Default 300.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -149,7 +144,7 @@ ISO 8601 datetime intervals:</p><ul><li><p>Year only: <code>"2024"</code> become
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Simple bounding box query for today</span></span></span>
 <span class="r-in"><span><span class="fu">stacit</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">140</span>, <span class="fl">145</span>, <span class="op">-</span><span class="fl">43</span>, <span class="op">-</span><span class="fl">40</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://earth-search.aws.element84.com/v1/search?collections=sentinel-2-c1-l2a&amp;bbox=140,-43,145,-40&amp;datetime=2026-01-03T00:00:00Z/2026-01-03T23:59:59Z&amp;limit=300"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://earth-search.aws.element84.com/v1/search?collections=sentinel-2-c1-l2a&amp;bbox=140,-43,145,-40&amp;datetime=2026-01-22T00:00:00Z/2026-01-22T23:59:59Z&amp;limit=300"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># MGRS grid square for a specific month</span></span></span>
 <span class="r-in"><span><span class="fu">stacit</span><span class="op">(</span><span class="st">"43DFD"</span>, date <span class="op">=</span> <span class="st">"2025-01"</span><span class="op">)</span></span></span>
@@ -167,7 +162,7 @@ ISO 8601 datetime intervals:</p><ul><li><p>Year only: <code>"2024"</code> become
 <span class="r-in"><span><span class="co"># Use Planetary Computer instead of Earth Search</span></span></span>
 <span class="r-in"><span><span class="fu">stacit</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">140</span>, <span class="fl">145</span>, <span class="op">-</span><span class="fl">43</span>, <span class="op">-</span><span class="fl">40</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>       provider <span class="op">=</span> <span class="st">"https://planetarycomputer.microsoft.com/api/stac/v1/search"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=sentinel-2-c1-l2a&amp;bbox=140,-43,145,-40&amp;datetime=2026-01-03T00:00:00Z/2026-01-03T23:59:59Z&amp;limit=300"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=sentinel-2-c1-l2a&amp;bbox=140,-43,145,-40&amp;datetime=2026-01-22T00:00:00Z/2026-01-22T23:59:59Z&amp;limit=300"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Query Landsat collection</span></span></span>
 <span class="r-in"><span><span class="fu">stacit</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">140</span>, <span class="fl">145</span>, <span class="op">-</span><span class="fl">43</span>, <span class="op">-</span><span class="fl">40</span><span class="op">)</span>, collections <span class="op">=</span> <span class="st">"landsat-c2-l2"</span>, date <span class="op">=</span> <span class="st">"2024"</span><span class="op">)</span></span></span>

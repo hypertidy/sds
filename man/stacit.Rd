@@ -10,9 +10,8 @@ stacit(
   collections = "sentinel-2-c1-l2a",
   provider = c("https://earth-search.aws.element84.com/v1/search",
     "https://planetarycomputer.microsoft.com/api/stac/v1/search"),
-  asset = c("visual"),
   gdal_stacit = FALSE,
-  limit = 1000
+  limit = 300
 )
 }
 \arguments{
@@ -29,12 +28,10 @@ Default is \code{"sentinel-2-c1-l2a"} (Sentinel-2 Cloud-Optimized GeoTIFFs).}
 \item{provider}{character; base URL of the STAC API search endpoint.
 Default uses Element 84's Earth Search. Also supports Microsoft Planetary Computer.}
 
-\item{asset}{character; asset key(s) to include. Default \code{"visual"} for RGB composite.}
-
 \item{gdal_stacit}{logical; if \code{TRUE}, return a GDAL STACIT driver DSN string
 instead of a URL. Default \code{FALSE}.}
 
-\item{limit}{integer; maximum number of items to return per query. Default 1000.}
+\item{limit}{integer; maximum number of items to return per query. Default 300.}
 }
 \value{
 Character vector of STAC search URL(s). Returns multiple URLs when

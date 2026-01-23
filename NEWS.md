@@ -4,6 +4,8 @@
 
 * Western anti-meridian queries are now handled (Issue #12). Removed unused asset from stacit(). 
 
+* Fix: update nsidc_seaice to version 4.0, #14. 
+
 * Accept MGRS code (precision 0) for stacit extent. 
 
 * Fast CGAZ. 

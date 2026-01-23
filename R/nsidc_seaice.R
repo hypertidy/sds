@@ -31,10 +31,13 @@ nsidc_seaice <- function(date, hemisphere = c("south", "north"),
   YEAR <- format(date, "%Y")
   MON_MON <- format(date, "%m_%b")
   VARNAME <- match.arg(varname)
+  ## update January 2026
+  ## "/vsicurl/https://noaadata.apps.nsidc.org/NOAA/G02135/south/daily/geotiff/2026/01_Jan/S_20260116_concentration_v4.0.tif"
+
   if (TEMPORAL == "daily") {
   noaabase <- sprintf("https://noaadata.apps.nsidc.org/NOAA/G02135/%s/%s/geotiff/%s/%s",
                       HEMI, TEMPORAL, YEAR, MON_MON)
-  noaafile <- sprintf("%s_%s_%s_v3.0.tif",
+  noaafile <- sprintf("%s_%s_%s_v4.0.tif",
                       toupper(substr(HEMI, 1, 1)),
                       format(date, "%Y%m%d"),
                       VARNAME)
@@ -43,7 +46,7 @@ nsidc_seaice <- function(date, hemisphere = c("south", "north"),
   } else {
     noaabase <- sprintf("https://noaadata.apps.nsidc.org/NOAA/G02135/%s/%s/geotiff/%s",
                         HEMI, TEMPORAL, MON_MON)
-    noaafile <- sprintf("%s_%s_%s_v3.0.tif",
+    noaafile <- sprintf("%s_%s_%s_v4.0.tif",
                         toupper(substr(HEMI, 1, 1)),
                         format(date, "%Y%m"),
                         VARNAME)

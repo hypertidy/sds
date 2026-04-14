@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.9012</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.9013</span>
       </span>
     </div>
 
@@ -44,7 +44,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>GEBCO source dsn</h1>
-    <small class="dont-index">Source: <a href="https://github.com/hypertidy/sds/blob/latest/R/sources.R" class="external-link"><code>R/sources.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/hypertidy/sds/blob/main/R/sources.R" class="external-link"><code>R/sources.R</code></a></small>
     <div class="hidden name"><code>gebco.Rd</code></div>
     </div>
 
@@ -54,6 +54,8 @@
 
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">gebco</span><span class="op">(</span>vsi <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">gebco25</span><span class="op">(</span>vsi <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">gebco24</span><span class="op">(</span>vsi <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
@@ -84,17 +86,22 @@
     <h2>Details</h2>
     <p>GEBCO 2023 and 2022 is created and hosted by Philippe Massicotte.</p>
 <p>GEBCO 2019 and 2021 created and hosted by the Australian Antarctic Division.</p>
-<p>See note about which forms of the bedrock vs ice surface are available. Generally we use the ice surface form, because that is what encountered while navigating the surface of the Earth. But, the bedrock is of course also of interest.</p>
+<p>See note about which forms of the bedrock vs ice surface are available. Generally we use the ice surface form, because that is what encountered while navigating the surface of the Earth. But, the bedrock is of course also of interest.
+"If the data sets are used in a presentation or publication then we ask that you acknowledge the source. This should be of the form (see references)."</p>
     </div>
     <div id="warning">
     <h2>warning</h2>
-    <p>please note that <code>gebco21()</code>, <code>gebco19()</code> return the <em>ice surface</em> form, while <code>gebco22()</code> returns the bedrock form. With <code>gebco23()</code> and <code>gebco23_bedrock()</code> these are now both avaiable, again thanks to Philippe Massicotte.</p>
+    <p>please note that <code>gebco21()</code>, <code>gebco19()</code>, <code>gebco24()</code> and <code>gebco25()</code> return the <em>ice surface</em> form, while <code>gebco22()</code> returns the bedrock form. With <code>gebco23()</code> and <code>gebco23_bedrock()</code> these are now both avaiable, again thanks to Philippe Massicotte.</p>
+    </div>
+    <div id="references">
+    <h2>References</h2>
+    <p><a href="https://www.gebco.net/data-products/gridded-bathymetry-data" class="external-link">https://www.gebco.net/data-products/gridded-bathymetry-data</a> 'GEBCO Compilation Group (2025) GEBCO 2025 Grid (doi:10.5285/37c52e96-24ea-67ce-e063-7086abc05f29)'</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">gebco</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/vsicurl/https://projects.pawsey.org.au/idea-gebco-tif/GEBCO_2024.tif"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/vsicurl/https://projects.pawsey.org.au/idea-gebco-tif/GEBCO_2025.tif"</span>
 </code></pre></div>
     </div>
   </div>

@@ -5,12 +5,15 @@
 \alias{gebco22}
 \alias{gebco21}
 \alias{gebco19}
+\alias{gebco25}
 \alias{gebco24}
 \alias{gebco23_bedrock}
 \alias{gebco23}
 \title{GEBCO source dsn}
 \usage{
 gebco(vsi = TRUE)
+
+gebco25(vsi = TRUE)
 
 gebco24(vsi = TRUE)
 
@@ -39,11 +42,15 @@ GEBCO 2023 and 2022 is created and hosted by Philippe Massicotte.
 GEBCO 2019 and 2021 created and hosted by the Australian Antarctic Division.
 
 See note about which forms of the bedrock vs ice surface are available. Generally we use the ice surface form, because that is what encountered while navigating the surface of the Earth. But, the bedrock is of course also of interest.
+"If the data sets are used in a presentation or publication then we ask that you acknowledge the source. This should be of the form (see references)."
 }
 \section{warning}{
- please note that \code{gebco21()}, \code{gebco19()} return the \emph{ice surface} form, while \code{gebco22()} returns the bedrock form. With \code{gebco23()} and \code{gebco23_bedrock()} these are now both avaiable, again thanks to Philippe Massicotte.
+ please note that \code{gebco21()}, \code{gebco19()}, \code{gebco24()} and \code{gebco25()} return the \emph{ice surface} form, while \code{gebco22()} returns the bedrock form. With \code{gebco23()} and \code{gebco23_bedrock()} these are now both avaiable, again thanks to Philippe Massicotte.
 }
 
 \examples{
 gebco()
+}
+\references{
+\url{https://www.gebco.net/data-products/gridded-bathymetry-data} 'GEBCO Compilation Group (2025) GEBCO 2025 Grid (doi:10.5285/37c52e96-24ea-67ce-e063-7086abc05f29)'
 }

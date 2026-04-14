@@ -80,9 +80,10 @@ srtm15 <- function() "/vsicurl/https://opentopography.s3.sdsc.edu/raster/SRTM15P
 #' GEBCO 2019 and 2021 created and hosted by the Australian Antarctic Division.
 #'
 #' See note about which forms of the bedrock vs ice surface are available. Generally we use the ice surface form, because that is what encountered while navigating the surface of the Earth. But, the bedrock is of course also of interest.
+#' "If the data sets are used in a presentation or publication then we ask that you acknowledge the source. This should be of the form (see references)."
+#' @references \url{https://www.gebco.net/data-products/gridded-bathymetry-data} 'GEBCO Compilation Group (2025) GEBCO 2025 Grid (doi:10.5285/37c52e96-24ea-67ce-e063-7086abc05f29)'
 #'
-#'
-#' @section warning: please note that `gebco21()`, `gebco19()` return the *ice surface* form, while `gebco22()` returns the bedrock form. With `gebco23()` and `gebco23_bedrock()` these are now both avaiable, again thanks to Philippe Massicotte.
+#' @section warning: please note that `gebco21()`, `gebco19()`, `gebco24()` and `gebco25()` return the *ice surface* form, while `gebco22()` returns the bedrock form. With `gebco23()` and `gebco23_bedrock()` these are now both avaiable, again thanks to Philippe Massicotte.
 #'
 #' @param vsi include the 'vsicurl' prefix (`TRUE` is default)
 #'
@@ -93,7 +94,15 @@ srtm15 <- function() "/vsicurl/https://opentopography.s3.sdsc.edu/raster/SRTM15P
 #' @examples
 #' gebco()
 gebco <- function(vsi = TRUE) {
-  gebco24(vsi = vsi)
+  gebco25(vsi = vsi)
+}
+
+#' @name gebco
+#' @export
+gebco25 <- function(vsi = TRUE) {
+  url <- "https://projects.pawsey.org.au/idea-gebco-tif/GEBCO_2025.tif"
+  if (vsi) url <- file.path("/vsicurl", url)
+  url
 }
 
 #' @name gebco

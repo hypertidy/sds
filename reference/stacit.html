@@ -19,7 +19,7 @@ assembling URL parameters."><!-- mathjax --><script src="https://cdnjs.cloudflar
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.9013</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.9014</span>
       </span>
     </div>
 
@@ -144,7 +144,7 @@ ISO 8601 datetime intervals:</p><ul><li><p>Year only: <code>"2024"</code> become
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Simple bounding box query for today</span></span></span>
 <span class="r-in"><span><span class="fu">stacit</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">140</span>, <span class="fl">145</span>, <span class="op">-</span><span class="fl">43</span>, <span class="op">-</span><span class="fl">40</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://earth-search.aws.element84.com/v1/search?collections=sentinel-2-c1-l2a&amp;bbox=140,-43,145,-40&amp;datetime=2026-04-13T00:00:00Z/2026-04-13T23:59:59Z&amp;limit=300"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://earth-search.aws.element84.com/v1/search?collections=sentinel-2-c1-l2a&amp;bbox=140,-43,145,-40&amp;datetime=2026-05-06T00:00:00Z/2026-05-06T23:59:59Z&amp;limit=300"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># MGRS grid square for a specific month</span></span></span>
 <span class="r-in"><span><span class="fu">stacit</span><span class="op">(</span><span class="st">"43DFD"</span>, date <span class="op">=</span> <span class="st">"2025-01"</span><span class="op">)</span></span></span>
@@ -162,7 +162,7 @@ ISO 8601 datetime intervals:</p><ul><li><p>Year only: <code>"2024"</code> become
 <span class="r-in"><span><span class="co"># Use Planetary Computer instead of Earth Search</span></span></span>
 <span class="r-in"><span><span class="fu">stacit</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">140</span>, <span class="fl">145</span>, <span class="op">-</span><span class="fl">43</span>, <span class="op">-</span><span class="fl">40</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>       provider <span class="op">=</span> <span class="st">"https://planetarycomputer.microsoft.com/api/stac/v1/search"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=sentinel-2-c1-l2a&amp;bbox=140,-43,145,-40&amp;datetime=2026-04-13T00:00:00Z/2026-04-13T23:59:59Z&amp;limit=300"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=sentinel-2-c1-l2a&amp;bbox=140,-43,145,-40&amp;datetime=2026-05-06T00:00:00Z/2026-05-06T23:59:59Z&amp;limit=300"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Query Landsat collection</span></span></span>
 <span class="r-in"><span><span class="fu">stacit</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">140</span>, <span class="fl">145</span>, <span class="op">-</span><span class="fl">43</span>, <span class="op">-</span><span class="fl">40</span><span class="op">)</span>, collections <span class="op">=</span> <span class="st">"landsat-c2-l2"</span>, date <span class="op">=</span> <span class="st">"2024"</span><span class="op">)</span></span></span>

@@ -1,5 +1,6 @@
 # sds dev
 
+* Add climate data record sea ice (full sequence)
 * Add mapterhorn_elevation. 
 
 * Add GEBCO 2025. 

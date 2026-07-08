@@ -6,9 +6,6 @@
 \usage{
 list_address(address)
 }
-\arguments{
-\item{address}{}
-}
 \value{
 string URI for List service
 }

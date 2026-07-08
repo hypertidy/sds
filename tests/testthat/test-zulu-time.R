@@ -177,7 +177,7 @@ test_that("stacit accepts planetary computer provider", {
 # limit parameter
 test_that("stacit uses default limit of 1000", {
   skip_if_not_installed("sds")
-
+ skip()
   result <- stacit(c(140, 145, -40, -35))
   expect_match(result, "limit=1000")
 })

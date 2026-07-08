@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.9015</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
       </span>
     </div>
 
@@ -48,6 +48,41 @@
     </div>
 
     <div class="section level2">
+<h2 class="page-header" data-toc-text="0.2.0" id="sds-020">sds 0.2.0<a class="anchor" aria-label="anchor" href="#sds-020"></a></h2>
+<ul><li><p>New registry backend: all constant sources now live in a plain CSV (<code>inst/extdata/sds-registry.csv</code>), one row per source. Adding a source is a one-line PR.</p></li>
+<li><p>New <code>dsn(name)</code> returns a GDAL-ready data source name, dressed by kind (<code>/vsicurl/</code>, <code>/vsizip//vsicurl/</code>, <code>WMTS:</code>, or full XML/VRT text). No <code>vsi</code> toggle – the registry knows the kind. Undress with <code><a href="https://hypertidy.github.io/dsn/reference/prefix.html" class="external-link">dsn::unvsicurl()</a></code> or take the bare url from <code><a href="../reference/dsn_list.html">dsn_list()</a></code>.</p></li>
+<li><p>New <code><a href="../reference/dsn_list.html">dsn_list()</a></code> and <code><a href="../reference/dsn_list.html">dsn_info()</a></code> for discovery – filter by theme, provider, kind; inspect crs, license, and liveness status.</p></li>
+<li><p>Existing source functions (<code><a href="../reference/gebco.html">gebco()</a></code>, <code><a href="../reference/dsn-sources.html">cop30()</a></code>, etc.) are retained as thin shims over <code><a href="../reference/dsn.html">dsn()</a></code>, no change to their behaviour.</p></li>
+<li><p>Depends on the <code>dsn</code> package for chainable VSI prefix verbs (<code>vsicurl()</code>, <code>vsizip()</code>, …).</p></li>
+<li><p>Many previously-unexported sources are now discoverable via the registry, including USGS and Tasmania (theLIST) WMTS, and AADC/DEA geoservers.</p></li>
+<li><p>Added WMTS catalog entries (ESRI, NASA GIBS incl. native Antarctic EPSG:3031 and Arctic EPSG:3413, Geoscience Australia, swisstopo), cherry-picked from the <code>sources-wmts-coop</code> branch (<a href="https://github.com/hypertidy/sds/issues/13" class="external-link">#13</a>).</p></li>
+<li><p>Added GADM 4.1 whole-planet administrative boundaries (<code>gadm</code>), companion to <code><a href="../reference/CGAZ.html">CGAZ()</a></code>.</p></li>
+<li><p>WMS and VRT payloads (OpenStreetMap TMS, mapterhorn) moved out of R source into <code>inst/sources/</code> files – readable and diffable.</p></li>
+<li><p>Fix: <code>stacit(gdal_stacit = TRUE)</code> no longer errors on a removed <code>asset</code>.</p></li>
+<li><p>Fix: <code><a href="../reference/mursst.html">mursst_time()</a></code> now calls <code><a href="../reference/mursst.html">mursst_zarr()</a></code> (was calling a renamed function).</p></li>
+<li><p>Fix: <code><a href="../reference/seaice_cdr.html">seaice_cdr()</a></code> no longer depends on dplyr (<code>case_when</code> replaced; sensor-era table shared with <code>cdr_urls()</code>).</p></li>
+<li><p>Fix: removed duplicate <code>usgs_shade()</code> definition; documented the <code>sentinel_grid</code> dataset and ship it once.</p></li>
+</ul></div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.1.0.9015" id="sds-0109015">sds 0.1.0.9015<a class="anchor" aria-label="anchor" href="#sds-0109015"></a></h2>
+<ul><li><p>Add climate data record sea ice (full sequence)</p></li>
+<li><p>Add mapterhorn_elevation.</p></li>
+<li><p>Add GEBCO 2025.</p></li>
+<li><p>GEDTM sources list is a dog’s breakfast so have removed for now.</p></li>
+<li><p>Western anti-meridian queries are now handled (Issue <a href="https://github.com/hypertidy/sds/issues/12" class="external-link">#12</a>). Removed unused asset from stacit().</p></li>
+<li><p>Fix: update nsidc_seaice to version 4.0, <a href="https://github.com/hypertidy/sds/issues/14" class="external-link">#14</a>.</p></li>
+<li><p>Accept MGRS code (precision 0) for stacit extent.</p></li>
+<li><p>Fast CGAZ.</p></li>
+<li><p>Fixed nsidc_seaice() for monthly.</p></li>
+<li><p>Add Swiss topo as a GTI file.</p></li>
+<li><p>Added GHRSST COGs .</p></li>
+<li><p>Added GEBCO 2024.</p></li>
+<li><p>Now more robust handling of date inputs for stacit().</p></li>
+<li><p>New source <code><a href="../reference/usgs_seamless.html">usgs_seamless()</a></code> elevation from the US.</p></li>
+<li><p><code><a href="../reference/CGAZ.html">CGAZ_sql()</a></code> now works with no arguments, and returns a general query useable by vapour_read_geometry() and friends.</p></li>
+<li><p>Add <code><a href="../reference/rema.html">rema()</a></code> and <code><a href="../reference/rema.html">rema_v2()</a></code>.</p></li>
+</ul></div>
+    <div class="section level2">
 <h2 class="page-header" data-toc-text="0.0.1" id="sds-001">sds 0.0.1<a class="anchor" aria-label="anchor" href="#sds-001"></a></h2>
 <ul><li>Renamed from spatial.datasources.</li>
 </ul></div>
@@ -65,7 +100,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
       </footer></div>

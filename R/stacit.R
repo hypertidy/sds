@@ -100,9 +100,9 @@ stacit <- function(extent, date = "", collections = "sentinel-2-c1-l2a",
   base <- sprintf("%s?collections=%s&%s&datetime=%s", provider, collections, bb, date)
 
   if (gdal_stacit) {
-      return(sprintf("STACIT:\"%s\":asset=%s", base, asset))
+      return(sprintf("STACIT:\"%s\"", base))
   }
 
-  URLencode(sprintf("%s&limit=%i", base, limit))
+  utils::URLencode(sprintf("%s&limit=%i", base, limit))
 
 }

@@ -28,6 +28,6 @@ This zarr and every other one I've found is unuseably out of date.
 It seems like this source doesn't go past "2020-01-21" or band 6443, don't know why that is.
 }
 \examples{
-mursst()
+mursst_zarr()
 mursst_time("2019-10-08")
 }

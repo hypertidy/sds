@@ -27,14 +27,11 @@ seaice_cdr <- function(date, hemisphere = c("south", "north"), vsi = TRUE) {
   if (date < as.Date("1978-10-25")) {
     warning('at time of writing CDR has no date earlier than 1978-10-25')
   }
-  sensor <- dplyr::case_when(
-    date <= as.Date("1987-07-09") ~ "n07",
-    date <= as.Date("1991-12-02") ~ "F08",
-    date <= as.Date("1995-09-30") ~ "F11",
-    date <= as.Date("2007-12-31") ~ "F13",
-    date <= as.Date("2024-12-31") ~ "F17",
-    TRUE                          ~ "am2"
-  )
+  ## sensor eras, boundaries inclusive of their end date
+  era_breaks <- as.Date(c("1987-07-09", "1991-12-02", "1995-09-30",
+                          "2007-12-31", "2024-12-31"))
+  era_sensors <- c("n07", "F08", "F11", "F13", "F17", "am2")
+  sensor <- era_sensors[findInterval(date, era_breaks + 1) + 1]
 base <- "https://noaadata.apps.nsidc.org/NOAA/G02202_V6/%s/daily/%s/sic_%s_%s_%s_v06r00.nc"
 if (vsi) {
   base <- sprintf("/vsicurl/%s", base)

@@ -1,6 +1,10 @@
-#' Title
+#' Tasmanian address query (theLIST)
 #'
-#' @param address
+#' Build a query URI against the LIST OpenData WFS address layer, returning
+#' EASTING, NORTHING, and PID for a street address.
+#'
+#' @param address character vector of number, street, locality e.g.
+#'   `c(2862, "LYELL", "HAYES")`
 #'
 #' @return string URI for List service
 #' @export

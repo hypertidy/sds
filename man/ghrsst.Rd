@@ -6,6 +6,9 @@
 \usage{
 ghrsst(vsi = TRUE)
 }
+\arguments{
+\item{vsi}{include the 'vsicurl' prefix (\code{TRUE} is default)}
+}
 \value{
 dataframe of source,date
 }

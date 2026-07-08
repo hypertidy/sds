@@ -2,22 +2,27 @@
 % Please edit documentation in R/listmap.R
 \name{list_address}
 \alias{list_address}
-\title{Title}
+\title{Tasmanian address query (theLIST)}
 \usage{
 list_address(address)
+}
+\arguments{
+\item{address}{character vector of number, street, locality e.g.
+\code{c(2862, "LYELL", "HAYES")}}
 }
 \value{
 string URI for List service
 }
 \description{
-Title
+Build a query URI against the LIST OpenData WFS address layer, returning
+EASTING, NORTHING, and PID for a street address.
 }
 \examples{
 x <- list_address(c(2862, "LYELL",  "HAYES"))
 #vals <- jsonlite::fromJSON(readr::read_file ( x), simplifyVector = F)$features[[1]]$attributes
 #plot(v <- vect(list_parcel(vals$PID)))
 #Sys.setenv("GDAL_DISABLE_READDIR_ON_OPEN"="TRUE")
-#dem <- rast("/vsicurl/https://s3.us-west-2.amazonaws.com/us-west-2.opendata.source.coop/alexgleith/tasmania-dem-2m/Tasmania_Statewide_2m_DEM_14-08-2021.tif")
+#dem <- rast(dsn("tasmania_dem_2m"))
 #plotRGB(project(rast(ortho), rast(v, res = .1), by_util = TRUE))
 #plot(v, add = T)
 }

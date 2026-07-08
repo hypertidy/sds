@@ -213,7 +213,7 @@ tas_dem <- function(vsicurl = TRUE) {
 #' @export
 #'
 #' @examples
-#' mursst()
+#' mursst_zarr()
 #' mursst_time("2019-10-08")
 mursst_zarr <- function(band = 0) {
   sprintf("ZARR:\"/vsis3/mur-sst/zarr\":/analysed_sst:%i", band)
@@ -235,7 +235,7 @@ mursst_time <- function(time = NULL) {
   band <- as.Date(time) - epoch
   if (band < 0) stop("time is before the beginning")
   if (time > (Sys.Date()-5)) message("time is only 5 days ago or in the future")
-  mursst(band)
+  mursst_zarr(as.integer(band))
 }
 
 #' GHRSST files, GeoTIFFs on source.coop
@@ -243,12 +243,14 @@ mursst_time <- function(time = NULL) {
 #' @return dataframe of source,date
 #' @export
 #'
+#' @param vsi include the 'vsicurl' prefix (`TRUE` is default)
+#'
 #' @examples
 #' files <- ghrsst()
 #' tail(files$source)
 ghrsst <- function(vsi = TRUE) {
  date <- as.POSIXct(seq(as.Date("2002-06-01"), Sys.Date() - 2, by = 1), tz = "UTC")
-  template <- template <- "https://data.source.coop/ausantarctic/ghrsst-mur-v2/%s/%s090000-JPL-L4_GHRSST-SSTfnd-MUR-GLOB-v02.0-fv04.1_analysed_sst.tif"
+  template <- "https://data.source.coop/ausantarctic/ghrsst-mur-v2/%s/%s090000-JPL-L4_GHRSST-SSTfnd-MUR-GLOB-v02.0-fv04.1_analysed_sst.tif"
   ymd <- format(date, '%Y/%m/%d')
   ymd2 <- format(date, '%Y%m%d')
   d <- tibble::tibble(source = sprintf(template, ymd, ymd2), date = date)
@@ -264,9 +266,6 @@ usgs_imagery <- function() {
 }
 usgs_image_topo <- function() {
   "WMTS:https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/WMTS/1.0.0/WMTSCapabilities.xml,layer=USGSImageryTopo,tilematrixset=default028mm"
-}
-usgs_shade <- function() {
-  "WMTS:https://basemap.nationalmap.gov/arcgis/rest/services/USGSShadedReliefOnly/MapServer/WMTS/1.0.0/WMTSCapabilities.xml,layer=USGSShadedReliefOnly,tilematrixset=default028mm"
 }
 usgs_shade <- function() {
   "WMTS:https://basemap.nationalmap.gov/arcgis/rest/services/USGSShadedReliefOnly/MapServer/WMTS/1.0.0/WMTSCapabilities.xml,layer=USGSShadedReliefOnly,tilematrixset=default028mm"
@@ -338,6 +337,11 @@ ibcso <- function(vsi = TRUE, chart = FALSE) {
 }
 
 #' DEA 250m dem
+#'
+#' Australian Bathymetry and Topography 2023 250m MSL 'COG' (AusSeabed).
+#'
+#' @param vsi include the 'vsicurl' prefix (`TRUE` is default)
+#' @returns character string, URL to online raster
 #' @export
 dea_250m_dem <- function(vsi = TRUE) {
   u <- "https://s3.ap-southeast-2.amazonaws.com/ausseabed-public-warehouse-bathymetry/L3/6009f454-290d-4c9a-a43d-00b254681696/Australian_Bathymetry_and_Topography_2023_250m_MSL_cog.tif"

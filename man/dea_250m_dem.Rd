@@ -6,6 +6,12 @@
 \usage{
 dea_250m_dem(vsi = TRUE)
 }
+\arguments{
+\item{vsi}{include the 'vsicurl' prefix (\code{TRUE} is default)}
+}
+\value{
+character string, URL to online raster
+}
 \description{
-DEA 250m dem
+Australian Bathymetry and Topography 2023 250m MSL 'COG' (AusSeabed).
 }

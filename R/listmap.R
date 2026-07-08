@@ -10,7 +10,7 @@
 #' #vals <- jsonlite::fromJSON(readr::read_file ( x), simplifyVector = F)$features[[1]]$attributes
 #' #plot(v <- vect(list_parcel(vals$PID)))
 #' #Sys.setenv("GDAL_DISABLE_READDIR_ON_OPEN"="TRUE")
-#' #dem <- rast("/vsicurl/https://s3.us-west-2.amazonaws.com/us-west-2.opendata.source.coop/alexgleith/tasmania-dem-2m/Tasmania_Statewide_2m_DEM_14-08-2021.tif")
+#' #dem <- rast(dsn("tasmania_dem_2m"))
 #' #plotRGB(project(rast(ortho), rast(v, res = .1), by_util = TRUE))
 #' #plot(v, add = T)
 list_address <- function(address) {

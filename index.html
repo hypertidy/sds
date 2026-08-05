@@ -87,10 +87,10 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hypertidy/sds" class="external-link">sds</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/gebco.html">gebco</a></span><span class="op">(</span><span class="op">)</span> <span class="co">## a global seamless topography (bathymetry and elevation)</span></span>
-<span><span class="co">#&gt; [1] "/vsicurl/https://gebco2023.s3.valeria.science/gebco_2023_land_cog.tif"</span></span>
+<span><span class="co">#&gt; [1] "/vsicurl/https://projects.pawsey.org.au/idea-gebco-tif/GEBCO_2025.tif"</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/CGAZ.html">CGAZ</a></span><span class="op">(</span><span class="op">)</span>  <span class="co">## a global nations boundaries dataset</span></span>
-<span><span class="co">#&gt; [1] "/vsizip//vsicurl/https://github.com/wmgeolab/geoBoundaries/raw/main/releaseData/CGAZ/geoBoundariesCGAZ_ADM0.zip"</span></span>
+<span><span class="co">#&gt; [1] "/vsicurl/https://github.com/mdsumner/geoboundaries/releases/download/latest/geoBoundariesCGAZ_ADM0.parquet"</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/CGAZ.html">CGAZ_sql</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"New Zealand"</span>, <span class="st">"Australia"</span><span class="op">)</span><span class="op">)</span> <span class="co">## a SQL query for the CGAZ polygons</span></span>
 <span><span class="co">#&gt; [1] "SELECT shapeGroup FROM geoBoundariesCGAZ_ADM0 WHERE shapeGroup IN ('NZL','AUS')"</span></span>
@@ -100,7 +100,7 @@
 <span></span>
 <span></span>
 <span><span class="fu"><a href="reference/mpc.html">mpc</a></span><span class="op">(</span><span class="op">)</span>  <span class="co">## return STAC collections for use with GDAL</span></span>
-<span><span class="co">#&gt; [1] "STACIT:\"https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=sentinel-2-l2a&amp;bbox=146.5,-43.2,147.5,-42.2&amp;datetime=2023-11-06T00:00:00Z/2023-11-12T00:00:00Z\""</span></span>
+<span><span class="co">#&gt; [1] "STACIT:\"https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=sentinel-2-l2a&amp;bbox=146.5,-43.2,147.5,-42.2&amp;datetime=2026-07-31T00:00:00Z/2026-08-06T00:00:00Z\""</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/mpc.html">mpc</a></span><span class="op">(</span> datetime <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2019-06-01"</span>, <span class="st">"2019-08-01"</span><span class="op">)</span><span class="op">)</span>, </span>
 <span>    bbox <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">148.56</span>, <span class="op">-</span><span class="fl">147.44</span>, <span class="fl">60.80</span>, <span class="fl">61.18</span><span class="op">)</span>, asset <span class="op">=</span> <span class="st">"visual"</span><span class="op">)</span></span>
@@ -110,16 +110,18 @@
 <span><span class="va">js</span> <span class="op">&lt;-</span> <span class="fu">jsonlite</span><span class="fu">::</span><span class="fu"><a href="https://jeroen.r-universe.dev/jsonlite/reference/fromJSON.html" class="external-link">fromJSON</a></span><span class="op">(</span><span class="fu"><a href="reference/mpc.html">mpc</a></span><span class="op">(</span>stacit  <span class="op">=</span> <span class="cn">F</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## do it how you like</span></span>
 <span><span class="va">js</span><span class="op">$</span><span class="va">features</span><span class="op">$</span><span class="va">assets</span><span class="op">$</span><span class="va">visual</span><span class="op">$</span><span class="va">href</span></span>
-<span><span class="co">#&gt; [1] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/EP/2023/11/10/S2A_MSIL2A_20231110T000221_N0509_R030_T55GEP_20231110T032257.SAFE/GRANULE/L2A_T55GEP_A043785_20231110T000221/IMG_DATA/R10m/T55GEP_20231110T000221_TCI_10m.tif"</span></span>
-<span><span class="co">#&gt; [2] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/EN/2023/11/10/S2A_MSIL2A_20231110T000221_N0509_R030_T55GEN_20231110T032256.SAFE/GRANULE/L2A_T55GEN_A043785_20231110T000221/IMG_DATA/R10m/T55GEN_20231110T000221_TCI_10m.tif"</span></span>
-<span><span class="co">#&gt; [3] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DP/2023/11/10/S2A_MSIL2A_20231110T000221_N0509_R030_T55GDP_20231110T032258.SAFE/GRANULE/L2A_T55GDP_A043785_20231110T000221/IMG_DATA/R10m/T55GDP_20231110T000221_TCI_10m.tif"</span></span>
-<span><span class="co">#&gt; [4] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DN/2023/11/10/S2A_MSIL2A_20231110T000221_N0509_R030_T55GDN_20231110T032256.SAFE/GRANULE/L2A_T55GDN_A043785_20231110T000221/IMG_DATA/R10m/T55GDN_20231110T000221_TCI_10m.tif"</span></span>
-<span><span class="co">#&gt; [5] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DP/2023/11/08/S2B_MSIL2A_20231108T001109_N0509_R073_T55GDP_20231108T032243.SAFE/GRANULE/L2A_T55GDP_A034848_20231108T001644/IMG_DATA/R10m/T55GDP_20231108T001109_TCI_10m.tif"</span></span>
-<span><span class="co">#&gt; [6] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DN/2023/11/08/S2B_MSIL2A_20231108T001109_N0509_R073_T55GDN_20231108T032239.SAFE/GRANULE/L2A_T55GDN_A034848_20231108T001644/IMG_DATA/R10m/T55GDN_20231108T001109_TCI_10m.tif"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DP/2026/08/04/S2B_MSIL2A_20260804T001109_N0512_R073_T55GDP_20260804T032649.SAFE/GRANULE/L2A_T55GDP_A049148_20260804T001400/IMG_DATA/R10m/T55GDP_20260804T001109_TCI_10m.tif"</span></span>
+<span><span class="co">#&gt; [2] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DN/2026/08/04/S2B_MSIL2A_20260804T001109_N0512_R073_T55GDN_20260804T032649.SAFE/GRANULE/L2A_T55GDN_A049148_20260804T001400/IMG_DATA/R10m/T55GDN_20260804T001109_TCI_10m.tif"</span></span>
+<span><span class="co">#&gt; [3] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DP/2026/08/01/S2A_MSIL2A_20260801T001251_N0512_R073_T55GDP_20260801T093911.SAFE/GRANULE/L2A_T55GDP_A058014_20260801T001252/IMG_DATA/R10m/T55GDP_20260801T001251_TCI_10m.tif"</span></span>
+<span><span class="co">#&gt; [4] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DN/2026/08/01/S2A_MSIL2A_20260801T001251_N0512_R073_T55GDN_20260801T093911.SAFE/GRANULE/L2A_T55GDN_A058014_20260801T001252/IMG_DATA/R10m/T55GDN_20260801T001251_TCI_10m.tif"</span></span>
+<span><span class="co">#&gt; [5] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/EP/2026/08/01/S2B_MSIL2A_20260801T000219_N0512_R030_T55GEP_20260801T031303.SAFE/GRANULE/L2A_T55GEP_A049105_20260801T000702/IMG_DATA/R10m/T55GEP_20260801T000219_TCI_10m.tif"</span></span>
+<span><span class="co">#&gt; [6] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/EN/2026/08/01/S2B_MSIL2A_20260801T000219_N0512_R030_T55GEN_20260801T031303.SAFE/GRANULE/L2A_T55GEN_A049105_20260801T000702/IMG_DATA/R10m/T55GEN_20260801T000219_TCI_10m.tif"</span></span>
+<span><span class="co">#&gt; [7] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DP/2026/08/01/S2B_MSIL2A_20260801T000219_N0512_R030_T55GDP_20260801T031303.SAFE/GRANULE/L2A_T55GDP_A049105_20260801T000702/IMG_DATA/R10m/T55GDP_20260801T000219_TCI_10m.tif"</span></span>
+<span><span class="co">#&gt; [8] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DN/2026/08/01/S2B_MSIL2A_20260801T000219_N0512_R030_T55GDN_20260801T031303.SAFE/GRANULE/L2A_T55GDN_A049105_20260801T000702/IMG_DATA/R10m/T55GDN_20260801T000219_TCI_10m.tif"</span></span></code></pre></div>
 <p>There are image tile servers:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/dsn-sources.html">wms_arcgis_mapserver_ESRI.WorldImagery_tms</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "&lt;GDAL_WMS&gt;&lt;Service name=\"TMS\"&gt;&lt;ServerUrl&gt;http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/${z}/${y}/${x}&lt;/ServerUrl&gt;&lt;/Service&gt;&lt;DataWindow&gt;&lt;UpperLeftX&gt;-20037508.34&lt;/UpperLeftX&gt;&lt;UpperLeftY&gt;20037508.34&lt;/UpperLeftY&gt;&lt;LowerRightX&gt;20037508.34&lt;/LowerRightX&gt;&lt;LowerRightY&gt;-20037508.34&lt;/LowerRightY&gt;&lt;TileLevel&gt;17&lt;/TileLevel&gt;&lt;TileCountX&gt;1&lt;/TileCountX&gt;&lt;TileCountY&gt;1&lt;/TileCountY&gt;&lt;YOrigin&gt;top&lt;/YOrigin&gt;&lt;/DataWindow&gt;&lt;Projection&gt;EPSG:900913&lt;/Projection&gt;&lt;BlockSizeX&gt;256&lt;/BlockSizeX&gt;&lt;BlockSizeY&gt;256&lt;/BlockSizeY&gt;&lt;BandsCount&gt;3&lt;/BandsCount&gt;&lt;MaxConnections&gt;10&lt;/MaxConnections&gt;&lt;Cache /&gt;&lt;/GDAL_WMS&gt;"</span></span>
+<span><span class="co">#&gt; [1] "&lt;GDAL_WMS&gt;&lt;Service name=\"TMS\"&gt;&lt;ServerUrl&gt;http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/${z}/${y}/${x}&lt;/ServerUrl&gt;&lt;/Service&gt;&lt;DataWindow&gt;&lt;UpperLeftX&gt;-20037508.34&lt;/UpperLeftX&gt;&lt;UpperLeftY&gt;20037508.34&lt;/UpperLeftY&gt;&lt;LowerRightX&gt;20037508.34&lt;/LowerRightX&gt;&lt;LowerRightY&gt;-20037508.34&lt;/LowerRightY&gt;&lt;TileLevel&gt;17&lt;/TileLevel&gt;&lt;TileCountX&gt;1&lt;/TileCountX&gt;&lt;TileCountY&gt;1&lt;/TileCountY&gt;&lt;YOrigin&gt;top&lt;/YOrigin&gt;&lt;/DataWindow&gt;&lt;Projection&gt;EPSG:900913&lt;/Projection&gt;&lt;BlockSizeX&gt;256&lt;/BlockSizeX&gt;&lt;BlockSizeY&gt;256&lt;/BlockSizeY&gt;&lt;BandsCount&gt;3&lt;/BandsCount&gt;&lt;MaxConnections&gt;10&lt;/MaxConnections&gt;&lt;Cache /&gt;&lt;ZeroBlockHttpCodes&gt;204,404,403&lt;/ZeroBlockHttpCodes&gt;&lt;/GDAL_WMS&gt;"</span></span>
 <span><span class="fu"><a href="reference/dsn-sources.html">wms_openstreetmap_tms</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "&lt;GDAL_WMS&gt;&lt;Service name=\"TMS\"&gt;&lt;ServerUrl&gt;https://tile.openstreetmap.org/${z}/${x}/${y}.png&lt;/ServerUrl&gt;&lt;/Service&gt;&lt;DataWindow&gt;&lt;UpperLeftX&gt;-20037508.34&lt;/UpperLeftX&gt;&lt;UpperLeftY&gt;20037508.34&lt;/UpperLeftY&gt;&lt;LowerRightX&gt;20037508.34&lt;/LowerRightX&gt;&lt;LowerRightY&gt;-20037508.34&lt;/LowerRightY&gt;&lt;TileLevel&gt;18&lt;/TileLevel&gt;&lt;TileCountX&gt;1&lt;/TileCountX&gt;&lt;TileCountY&gt;1&lt;/TileCountY&gt;&lt;YOrigin&gt;top&lt;/YOrigin&gt;&lt;/DataWindow&gt;&lt;Projection&gt;EPSG:3857&lt;/Projection&gt;&lt;BlockSizeX&gt;256&lt;/BlockSizeX&gt;&lt;BlockSizeY&gt;256&lt;/BlockSizeY&gt;&lt;BandsCount&gt;3&lt;/BandsCount&gt;&lt;!--&lt;UserAgent&gt;Please add a specific user agent text, to avoid the default one being used, and potentially blocked by OSM servers in case a too big usage of it would be seen&lt;/UserAgent&gt;--&gt;&lt;Cache /&gt;&lt;/GDAL_WMS&gt;"</span></span>
 <span></span>
@@ -128,9 +130,9 @@
 <p>And a very specific sea ice source:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/nsidc_seaice.html">nsidc_seaice</a></span><span class="op">(</span>hemisphere <span class="op">=</span> <span class="st">"south"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/vsicurl/https://noaadata.apps.nsidc.org/NOAA/G02135/south/daily/geotiff/2023/11_Nov/S_20231104_concentration_v3.0.tif"</span></span>
+<span><span class="co">#&gt; [1] "/vsicurl/https://noaadata.apps.nsidc.org/NOAA/G02135/south/daily/geotiff/2026/07_Jul/S_20260729_concentration_v4.0.tif"</span></span>
 <span><span class="fu"><a href="reference/nsidc_seaice.html">nsidc_seaice</a></span><span class="op">(</span>hemisphere <span class="op">=</span> <span class="st">"north"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/vsicurl/https://noaadata.apps.nsidc.org/NOAA/G02135/north/daily/geotiff/2023/11_Nov/N_20231104_concentration_v3.0.tif"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "/vsicurl/https://noaadata.apps.nsidc.org/NOAA/G02135/north/daily/geotiff/2026/07_Jul/N_20260729_concentration_v4.0.tif"</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
@@ -181,7 +183,8 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/hypertidy/spatial.datasources/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/hypertidy/spatial.datasources/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://CRAN.R-project.org/package=sds" class="external-link"><img src="https://www.r-pkg.org/badges/version/sds" alt="CRAN status"></a></li>
+<li><a href="https://github.com/hypertidy/sds/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/hypertidy/sds/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
 

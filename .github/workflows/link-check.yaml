@@ -1,0 +1,79 @@
+name: link-check
+
+on:
+  schedule:
+    - cron: "17 2 * * 1"   # weekly, Monday 02:17 UTC
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "inst/extdata/sds-registry.csv"
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  linkcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # PR mode: check only rows added or changed by this PR, so a
+      # pre-existing dead link cannot block an unrelated contribution.
+      - name: Determine changed rows (PR only)
+        if: github.event_name == 'pull_request'
+        id: changed
+        run: |
+          git fetch --quiet origin ${{ github.base_ref }}
+          names=$(diff <(git show origin/${{ github.base_ref }}:inst/extdata/sds-registry.csv) \
+                       inst/extdata/sds-registry.csv \
+                  | grep '^>' | sed 's/^> //' \
+                  | python3 -c 'import csv,sys; print(",".join(r[0] for r in csv.reader(sys.stdin) if r))')
+          echo "names=$names" >> "$GITHUB_OUTPUT"
+          echo "changed rows: ${names:-none}"
+
+      - name: Check changed rows (PR)
+        if: github.event_name == 'pull_request' && steps.changed.outputs.names != ''
+        run: python3 .github/scripts/linkcheck.py --names "${{ steps.changed.outputs.names }}"
+
+      - name: Check all rows (schedule/manual)
+        if: github.event_name != 'pull_request'
+        id: full
+        continue-on-error: true
+        run: python3 .github/scripts/linkcheck.py
+
+      # One persistent issue: created on first failure, body refreshed on
+      # subsequent failing runs, closed automatically when all recover.
+      - name: Open or update report issue
+        if: github.event_name != 'pull_request' && steps.full.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Link check: failing sources"
+          num=$(gh issue list --label link-check --state open --json number --jq '.[0].number // empty')
+          {
+            echo "Automated report, $(date -u +%F). Runs weekly; this issue updates in place and closes itself when all sources recover."
+            echo
+            cat linkcheck-report.md
+          } > body.md
+          if [ -n "$num" ]; then
+            gh issue edit "$num" --body-file body.md
+          else
+            gh issue create --title "$title" --label link-check --body-file body.md
+          fi
+
+      - name: Close report issue on recovery
+        if: github.event_name != 'pull_request' && steps.full.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          num=$(gh issue list --label link-check --state open --json number --jq '.[0].number // empty')
+          if [ -n "$num" ]; then
+            gh issue close "$num" --comment "All sources passing as of $(date -u +%F)."
+          fi
+
+      - name: Fail the run if sources are failing
+        if: github.event_name != 'pull_request' && steps.full.outcome == 'failure'
+        run: exit 1

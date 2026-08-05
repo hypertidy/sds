@@ -5,3 +5,4 @@ gdalwmscache
 .httr-oauth
 .DS_Store
 .positai
+linkcheck-report.md

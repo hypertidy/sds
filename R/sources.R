@@ -331,7 +331,7 @@ ozgrab_bag_sources <- c("WMTS:https://maps.sa.gov.au/arcgis/rest/services/BaseMa
 #'
 ibcso <- function(vsi = TRUE, chart = FALSE) {
   u <- "https://github.com/mdsumner/ibcso-cog/raw/main/IBCSO_v2_ice-surface_cog.tif"
-  if (chart) u <- "https://github.com/mdsumner/ibcso-cog/raw/main/IBSCO_v2_digital_chart.tif"
+  if (chart) u <- "https://github.com/mdsumner/ibcso-cog/raw/main/IBCSO_v2_digital_chart.tif"
   if (vsi) u <- sprintf("/vsicurl/%s", u)
   u
 }

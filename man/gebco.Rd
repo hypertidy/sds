@@ -2,16 +2,19 @@
 % Please edit documentation in R/sources.R
 \name{gebco}
 \alias{gebco}
+\alias{gebco26}
+\alias{gebco25}
+\alias{gebco24}
 \alias{gebco22}
 \alias{gebco21}
 \alias{gebco19}
-\alias{gebco25}
-\alias{gebco24}
 \alias{gebco23_bedrock}
 \alias{gebco23}
 \title{GEBCO source dsn}
 \usage{
 gebco(vsi = TRUE)
+
+gebco26(vsi = TRUE)
 
 gebco25(vsi = TRUE)
 
@@ -45,7 +48,7 @@ See note about which forms of the bedrock vs ice surface are available. Generall
 "If the data sets are used in a presentation or publication then we ask that you acknowledge the source. This should be of the form (see references)."
 }
 \section{warning}{
- please note that \code{gebco21()}, \code{gebco19()}, \code{gebco24()} and \code{gebco25()} return the \emph{ice surface} form, while \code{gebco22()} returns the bedrock form. With \code{gebco23()} and \code{gebco23_bedrock()} these are now both avaiable, again thanks to Philippe Massicotte.
+ please note that \code{gebco21()}, \code{gebco19()}, \code{gebco24()}, \code{gebco25()} and \code{gebco26()} return the \emph{ice surface} form, while \code{gebco22()} returns the bedrock form. With \code{gebco23()} and \code{gebco23_bedrock()} these are now both avaiable, again thanks to Philippe Massicotte.
 }
 
 \examples{
@@ -53,4 +56,6 @@ gebco()
 }
 \references{
 \url{https://www.gebco.net/data-products/gridded-bathymetry-data} 'GEBCO Compilation Group (2025) GEBCO 2025 Grid (doi:10.5285/37c52e96-24ea-67ce-e063-7086abc05f29)'
+
+GEBCO 2026, 2025 and 2024 are hosted on Source Cooperative by the Australian Antarctic Division.
 }

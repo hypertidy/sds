@@ -1,5 +1,10 @@
 # sds 0.2.0
 
+* New `gebco26()` for the GEBCO 2026 grid, and `gebco()` now defaults to it.
+  `gebco26()`, `gebco25()`, and `gebco24()` are now served from Source
+  Cooperative (`https://data.source.coop/ausantarctic/gebco/`), hosted by the
+  Australian Antarctic Division.
+
 * New registry backend: all constant sources now live in a plain CSV
   (`inst/extdata/sds-registry.csv`), one row per source. Adding a source is a
   one-line PR.

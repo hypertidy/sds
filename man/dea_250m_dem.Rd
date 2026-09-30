@@ -15,3 +15,8 @@ character string, URL to online raster
 \description{
 Australian Bathymetry and Topography 2023 250m MSL 'COG' (AusSeabed).
 }
+\details{
+The 2023 grid was superseded on 2024-12-05 by AusBathyTopo 250m 2024
+(eCat 150050, doi:10.26186/150050) and the 2023 object removed, so this
+function currently errors with that information (see the registry row).
+}

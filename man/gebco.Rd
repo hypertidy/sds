@@ -20,13 +20,13 @@ gebco25(vsi = TRUE)
 
 gebco24(vsi = TRUE)
 
-gebco21(vsi = TRUE)
-
 gebco23_bedrock(vsi = TRUE)
 
 gebco23(vsi = TRUE)
 
 gebco22(vsi = TRUE)
+
+gebco21(vsi = TRUE)
 
 gebco19(vsi = TRUE)
 }

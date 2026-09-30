@@ -42,13 +42,15 @@ A data source name to the GEBCO  elevation 'COG' GeoTIFF.
 \details{
 GEBCO 2023 and 2022 is created and hosted by Philippe Massicotte.
 
-GEBCO 2019 and 2021 created and hosted by the Australian Antarctic Division.
+GEBCO 2019 and 2021 created and hosted by the Australian Antarctic Division,
+served via the AADC data API (\code{data.aad.gov.au/eds/api}).
 
 See note about which forms of the bedrock vs ice surface are available. Generally we use the ice surface form, because that is what encountered while navigating the surface of the Earth. But, the bedrock is of course also of interest.
 "If the data sets are used in a presentation or publication then we ask that you acknowledge the source. This should be of the form (see references)."
 }
 \section{warning}{
- please note that \code{gebco21()}, \code{gebco19()}, \code{gebco24()}, \code{gebco25()} and \code{gebco26()} return the \emph{ice surface} form, while \code{gebco22()} returns the bedrock form. With \code{gebco23()} and \code{gebco23_bedrock()} these are now both avaiable, again thanks to Philippe Massicotte.
+ please note that \code{gebco21()}, \code{gebco19()}, \code{gebco24()}, \code{gebco25()} and \code{gebco26()} return the \emph{ice surface} form, while \code{gebco22()} returns the bedrock form. With \code{gebco23()} and \code{gebco23_bedrock()},
+thanks to Philippe Massicotte.
 }
 
 \examples{

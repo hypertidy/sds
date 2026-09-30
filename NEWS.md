@@ -5,6 +5,11 @@
   Cooperative (`https://data.source.coop/ausantarctic/gebco/`), hosted by the
   Australian Antarctic Division.
 
+* `gebco21()` and `gebco19()` now use the stable AADC data API endpoint
+  (`data.aad.gov.au/eds/api`), replacing the retired
+  `public.services.aad.gov.au` host. `/vsicurl/` follows the API's redirect to
+  the (short-lived, presigned) object URL.
+
 * New registry backend: all constant sources now live in a plain CSV
   (`inst/extdata/sds-registry.csv`), one row per source. Adding a source is a
   one-line PR.

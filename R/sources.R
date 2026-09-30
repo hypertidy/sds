@@ -77,7 +77,8 @@ srtm15 <- function() "/vsicurl/https://opentopography.s3.sdsc.edu/raster/SRTM15P
 #'
 #' GEBCO 2023 and 2022 is created and hosted by Philippe Massicotte.
 #'
-#' GEBCO 2019 and 2021 created and hosted by the Australian Antarctic Division.
+#' GEBCO 2019 and 2021 created and hosted by the Australian Antarctic Division,
+#' served via the AADC data API (`data.aad.gov.au/eds/api`).
 #'
 #' See note about which forms of the bedrock vs ice surface are available. Generally we use the ice surface form, because that is what encountered while navigating the surface of the Earth. But, the bedrock is of course also of interest.
 #' "If the data sets are used in a presentation or publication then we ask that you acknowledge the source. This should be of the form (see references)."
@@ -128,7 +129,9 @@ gebco24 <- function(vsi = TRUE) {
 #' @name gebco
 #' @export
 gebco21 <- function(vsi = TRUE) {
-  url <- "https://public.services.aad.gov.au/datasets/science/GEBCO_2021_GEOTIFF/GEBCO_2021.tif"
+  # AADC download endpoint 302-redirects to a short-lived presigned S3 URL, so
+  # we keep the stable API URL and let /vsicurl/ follow the redirect.
+  url <- "https://data.aad.gov.au/eds/api/dataset/e2211189-ff68-4ba0-be09-a8f1dbe02af6/object/download?prefix=GEBCO_2021.tif"
   if (vsi) url <- file.path("/vsicurl", url)
   url
 }
@@ -163,7 +166,9 @@ gebco22 <- function (vsi = TRUE)
 #' @name gebco
 #' @export
 gebco19 <- function(vsi = TRUE) {
-  url <- "https://public.services.aad.gov.au/datasets/science/GEBCO_2019_GEOTIFF/GEBCO_2019.tif"
+  # AADC download endpoint 302-redirects to a short-lived presigned S3 URL, so
+  # we keep the stable API URL and let /vsicurl/ follow the redirect.
+  url <- "https://data.aad.gov.au/eds/api/dataset/ef32700c-bda7-4d97-916f-6ee0d3a4eb4c/object/download?prefix=GEBCO_2019.tif"
   if (vsi) url <- file.path("/vsicurl", url)
   url
 }

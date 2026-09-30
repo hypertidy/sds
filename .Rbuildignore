@@ -8,3 +8,5 @@
 ^data-raw$
 ^\.positai$
 ^\.claude$
+^cran-comments\.md$
+^linkcheck-report\.md$

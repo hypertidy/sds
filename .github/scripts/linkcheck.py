@@ -37,6 +37,8 @@ def derive(row):
     url, kind = row["url"], row["kind"]
     if row.get("status", "") == "dead":
         return ("skip", "status=dead")
+    if row.get("linkcheck", "") == "skip":
+        return ("skip", "linkcheck=skip")
     if kind in ("cog", "vrt_url", "parquet", "gpkg"):
         return ("url", url)
     if kind == "zip_vector":
@@ -103,7 +105,7 @@ def main(argv):
     with open("linkcheck-report.md", "w") as out:
         if persistent:
             out.write(f"{len(persistent)} of {checked} checked sources failing "
-                      f"({skipped} skipped as status=dead).\n\n")
+                      f"({skipped} skipped).\n\n")
             out.write("| name | kind | code | checked url |\n|---|---|---|---|\n")
             for name, kind, code, target in persistent:
                 out.write(f"| `{name}` | {kind} | {code} | {target} |\n")
@@ -112,7 +114,7 @@ def main(argv):
                       "the row.\n")
         else:
             out.write(f"All {checked} checked sources ok "
-                      f"({skipped} skipped as status=dead).\n")
+                      f"({skipped} skipped).\n")
     print(open("linkcheck-report.md").read())
     return 1 if persistent else 0
 

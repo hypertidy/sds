@@ -1,3 +1,41 @@
+# sds 0.3.0
+
+* The registry (`inst/extdata/sds-registry.csv`) is now the single source of
+  truth for constant sources: the legacy functions (`gebco()` suite, `cop30()`,
+  `rema()`, `CGAZ()`, `addrock()`, `tas_dem()`, `ibcso()`, the `wms_*` family,
+  and friends) are one-line shims over `dsn()`. Edit the CSV, not the
+  functions; equivalence is enforced by tests.
+
+* The GDAL_WMS XML recipes (`wms_*`) and the mapterhorn VRT now live as
+  readable files in `inst/sources/`, each with a registry row. The two
+  `wms_mapbox_*` functions remain token templates and are not rows.
+  `wms_amazon_elevation()` no longer bakes in a stale 2022 UserAgent.
+
+* New export `gadm()`, GADM 4.1 whole-planet GeoParquet hosted as an sds
+  release asset; the geodata.ucdavis.edu GeoPackage remains available as
+  `dsn("gadm_gpkg")`.
+
+* Registry catch-up with the GEBCO rehosting: `gebco26` row added, 2024-2026
+  served from Source Cooperative, 2019/2021 via the AADC data API.
+
+* Fix: `ibcso(chart = TRUE)` pointed at a misspelled (404) filename; now
+  registry-backed and regression-tested.
+
+* Dead sources now say so: `dea_250m_dem()` errors with its successor
+  (AusBathyTopo 250m 2024, doi:10.26186/150050) instead of returning a 404
+  URL; `esri_ocean` (retired 2022) and `usgs_tnmblank` are marked dead;
+  `CGAZ(old = TRUE)` warns. `ga_national_map` service name corrected
+  (NationalBaseMap) and a greyscale variant added.
+
+* The registry gained a `linkcheck` column (`skip` for sources alive but
+  unreachable from CI), and the ozgrab grab-bag of Australian state services
+  is promoted to named rows (sa/qld/nsw/wa/vic), adjudicated by the weekly
+  link check.
+
+* Removed unexported duplicates superseded by registry rows (the usgs_*
+  WMTS functions, `tasmap_sources()`, the geoserver helpers); all remain
+  available via `dsn()` / `dsn_list()`.
+
 # sds 0.2.0
 
 * New `gebco26()` for the GEBCO 2026 grid, and `gebco()` now defaults to it.

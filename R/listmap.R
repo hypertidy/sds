@@ -42,5 +42,5 @@ list_parcel <- function(PID) {
 #' @examples
 #' list_parcel_shp()  ## read with terra::vect( ) or new(gdalraster::GDALVector, )
 list_parcel_shp <- function() {
-  "/vsizip//vsicurl/listdata.thelist.tas.gov.au/opendata/data/LIST_PARCELS_HOBART.zip/list_parcels_hobart.shp"
+  dsn("list_parcel_shp")
 }

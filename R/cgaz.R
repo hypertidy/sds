@@ -8,8 +8,7 @@
 #' @name CGAZ
 #' @aliases CGAZ_sql
 CGAZ <- function(old = FALSE) {
-  if (old) return("/vsizip//vsicurl/https://github.com/wmgeolab/geoBoundaries/raw/main/releaseData/CGAZ/geoBoundariesCGAZ_ADM0.zip")
- "/vsicurl/https://github.com/mdsumner/geoboundaries/releases/download/latest/geoBoundariesCGAZ_ADM0.parquet"
+  dsn(if (old) "cgaz_zip" else "cgaz")
 }
 
 #' @param codes a list of iso3 country codes, or country names (this is a bit sketchy)

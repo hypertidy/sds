@@ -43,6 +43,11 @@
   paste0(readLines(path, warn = FALSE), collapse = "\n")
 }
 
+## the kind vocabulary: one list, consumed by .dress() and the tests
+#' @noRd
+.sds_kinds <- c("cog", "vrt_url", "parquet", "gpkg", "zip_vector",
+                "wmts", "raw", "xml_file", "vrt_file")
+
 ## kind -> dressing, expressed in dsn verbs
 #' @noRd
 .dress <- function(url, kind) {
@@ -176,3 +181,13 @@ dsn_info <- function(name) {
 ## }
 ## gebco <- function(vsi = TRUE) gebco25(vsi = vsi)
 ## ---------------------------------------------------------------------------
+
+## Internal: shim helper for the legacy constant-source functions. These keep
+## their historical signatures (vsi/vsicurl toggles) but the URL lives in the
+## registry only -- edit inst/extdata/sds-registry.csv, not the function.
+#' @noRd
+.shim <- function(name, vsi = TRUE) {
+  out <- dsn(name)
+  if (!vsi) out <- dsn::unvsicurl(out)
+  out
+}

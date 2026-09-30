@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
       </span>
     </div>
 
@@ -47,6 +47,17 @@
       <small>Source: <a href="https://github.com/hypertidy/sds/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.3.0" id="sds-030">sds 0.3.0<a class="anchor" aria-label="anchor" href="#sds-030"></a></h2>
+<ul><li><p>The registry (<code>inst/extdata/sds-registry.csv</code>) is now the single source of truth for constant sources: the legacy functions (<code><a href="../reference/gebco.html">gebco()</a></code> suite, <code><a href="../reference/dsn-sources.html">cop30()</a></code>, <code><a href="../reference/rema.html">rema()</a></code>, <code><a href="../reference/CGAZ.html">CGAZ()</a></code>, <code><a href="../reference/addrock.html">addrock()</a></code>, <code><a href="../reference/tas_dem.html">tas_dem()</a></code>, <code><a href="../reference/ibcso.html">ibcso()</a></code>, the <code>wms_*</code> family, and friends) are one-line shims over <code><a href="../reference/dsn.html">dsn()</a></code>. Edit the CSV, not the functions; equivalence is enforced by tests.</p></li>
+<li><p>The GDAL_WMS XML recipes (<code>wms_*</code>) and the mapterhorn VRT now live as readable files in <code>inst/sources/</code>, each with a registry row. The two <code>wms_mapbox_*</code> functions remain token templates and are not rows. <code><a href="../reference/dsn-sources.html">wms_amazon_elevation()</a></code> no longer bakes in a stale 2022 UserAgent.</p></li>
+<li><p>New export <code><a href="../reference/gadm.html">gadm()</a></code>, GADM 4.1 whole-planet GeoParquet hosted as an sds release asset; the geodata.ucdavis.edu GeoPackage remains available as <code>dsn("gadm_gpkg")</code>.</p></li>
+<li><p>Registry catch-up with the GEBCO rehosting: <code>gebco26</code> row added, 2024-2026 served from Source Cooperative, 2019/2021 via the AADC data API.</p></li>
+<li><p>Fix: <code>ibcso(chart = TRUE)</code> pointed at a misspelled (404) filename; now registry-backed and regression-tested.</p></li>
+<li><p>Dead sources now say so: <code><a href="../reference/dea_250m_dem.html">dea_250m_dem()</a></code> errors with its successor (AusBathyTopo 250m 2024, <a href="doi:10.26186/150050" class="uri">doi:10.26186/150050</a>) instead of returning a 404 URL; <code>esri_ocean</code> (retired 2022) and <code>usgs_tnmblank</code> are marked dead; <code>CGAZ(old = TRUE)</code> warns. <code>ga_national_map</code> service name corrected (NationalBaseMap) and a greyscale variant added.</p></li>
+<li><p>The registry gained a <code>linkcheck</code> column (<code>skip</code> for sources alive but unreachable from CI), and the ozgrab grab-bag of Australian state services is promoted to named rows (sa/qld/nsw/wa/vic), adjudicated by the weekly link check.</p></li>
+<li><p>Removed unexported duplicates superseded by registry rows (the usgs_* WMTS functions, <code>tasmap_sources()</code>, the geoserver helpers); all remain available via <code><a href="../reference/dsn.html">dsn()</a></code> / <code><a href="../reference/dsn_list.html">dsn_list()</a></code>.</p></li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.0" id="sds-020">sds 0.2.0<a class="anchor" aria-label="anchor" href="#sds-020"></a></h2>
 <ul><li><p>New <code><a href="../reference/gebco.html">gebco26()</a></code> for the GEBCO 2026 grid, and <code><a href="../reference/gebco.html">gebco()</a></code> now defaults to it. <code><a href="../reference/gebco.html">gebco26()</a></code>, <code><a href="../reference/gebco.html">gebco25()</a></code>, and <code><a href="../reference/gebco.html">gebco24()</a></code> are now served from Source Cooperative (<code>https://data.source.coop/ausantarctic/gebco/</code>), hosted by the Australian Antarctic Division.</p></li>

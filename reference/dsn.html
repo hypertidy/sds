@@ -22,7 +22,7 @@ sources that are recipes rather than URLs."><!-- mathjax --><script src="https:/
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
       </span>
     </div>
 
@@ -89,16 +89,20 @@ example 'paste0("vrt://", dsn("esri_world_imagery"), "?ovr=12")'.</p>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">dsn</span><span class="op">(</span><span class="st">"gebco25"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/vsicurl/https://projects.pawsey.org.au/idea-gebco-tif/GEBCO_2025.tif"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/vsicurl/https://data.source.coop/ausantarctic/gebco/GEBCO_2025.tif"</span>
 <span class="r-in"><span><span class="fu">dsn</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cop30"</span>, <span class="st">"nasa_antarctic_modis"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                 cop30 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                               "/vsicurl/https://opentopography.s3.sdsc.edu/raster/COP30/COP30_hh.vrt" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                  nasa_antarctic_modis </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> "WMTS:https://gibs.earthdata.nasa.gov/wmts/epsg3031/best/1.0.0/WMTSCapabilities.xml,layer=MODIS_Terra_CorrectedReflectance_TrueColor" </span>
 <span class="r-in"><span><span class="fu"><a href="dsn_list.html">dsn_list</a></span><span class="op">(</span>theme <span class="op">=</span> <span class="st">"bathymetry"</span><span class="op">)</span><span class="op">$</span><span class="va">name</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "gebco25"         "gebco24"         "gebco23"         "gebco23_bedrock"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "gebco22"         "gebco21"         "gebco19"         "srtm15"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "ibcso"           "ibcso_chart"     "dea_250m_dem"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "gebco25"                  "gebco24"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "gebco23"                  "gebco23_bedrock"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "gebco22"                  "gebco21"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "gebco19"                  "srtm15"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "ibcso"                    "ibcso_chart"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "dea_250m_dem"             "gebco26"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "ga_marine_geomorphic_wms"</span>
 </code></pre></div>
     </div>
   </div>

@@ -98,9 +98,8 @@
 <span><span class="fu"><a href="reference/dsn-sources.html">cop30</a></span><span class="op">(</span><span class="op">)</span>  <span class="co">## a global 30m elevation data set </span></span>
 <span><span class="co">#&gt; [1] "/vsicurl/https://opentopography.s3.sdsc.edu/raster/COP30/COP30_hh.vrt"</span></span>
 <span></span>
-<span></span>
 <span><span class="fu"><a href="reference/mpc.html">mpc</a></span><span class="op">(</span><span class="op">)</span>  <span class="co">## return STAC collections for use with GDAL</span></span>
-<span><span class="co">#&gt; [1] "STACIT:\"https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=sentinel-2-l2a&amp;bbox=146.5,-43.2,147.5,-42.2&amp;datetime=2026-09-25T00:00:00Z/2026-10-01T00:00:00Z\""</span></span>
+<span><span class="co">#&gt; [1] "STACIT:\"https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=sentinel-2-l2a&amp;bbox=146.5,-43.2,147.5,-42.2&amp;datetime=2026-09-26T00:00:00Z/2026-10-02T00:00:00Z\""</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/mpc.html">mpc</a></span><span class="op">(</span> datetime <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2019-06-01"</span>, <span class="st">"2019-08-01"</span><span class="op">)</span><span class="op">)</span>, </span>
 <span>    bbox <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">148.56</span>, <span class="op">-</span><span class="fl">147.44</span>, <span class="fl">60.80</span>, <span class="fl">61.18</span><span class="op">)</span>, asset <span class="op">=</span> <span class="st">"visual"</span><span class="op">)</span></span>
@@ -110,16 +109,12 @@
 <span><span class="va">js</span> <span class="op">&lt;-</span> <span class="fu">jsonlite</span><span class="fu">::</span><span class="fu"><a href="https://jeroen.r-universe.dev/jsonlite/reference/fromJSON.html" class="external-link">fromJSON</a></span><span class="op">(</span><span class="fu"><a href="reference/mpc.html">mpc</a></span><span class="op">(</span>stacit  <span class="op">=</span> <span class="cn">F</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## do it how you like</span></span>
 <span><span class="va">js</span><span class="op">$</span><span class="va">features</span><span class="op">$</span><span class="va">assets</span><span class="op">$</span><span class="va">visual</span><span class="op">$</span><span class="va">href</span></span>
-<span><span class="co">#&gt;  [1] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DP/2026/09/30/S2A_MSIL2A_20260930T001241_N0513_R073_T55GDP_20260930T044108.SAFE/GRANULE/L2A_T55GDP_A058872_20260930T001244/IMG_DATA/R10m/T55GDP_20260930T001241_TCI_10m.tif"</span></span>
-<span><span class="co">#&gt;  [2] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DN/2026/09/30/S2A_MSIL2A_20260930T001241_N0513_R073_T55GDN_20260930T044108.SAFE/GRANULE/L2A_T55GDN_A058872_20260930T001244/IMG_DATA/R10m/T55GDN_20260930T001241_TCI_10m.tif"</span></span>
-<span><span class="co">#&gt;  [3] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/EP/2026/09/30/S2B_MSIL2A_20260930T000219_N0513_R030_T55GEP_20260930T024315.SAFE/GRANULE/L2A_T55GEP_A049963_20260930T000221/IMG_DATA/R10m/T55GEP_20260930T000219_TCI_10m.tif"</span></span>
-<span><span class="co">#&gt;  [4] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/EN/2026/09/30/S2B_MSIL2A_20260930T000219_N0513_R030_T55GEN_20260930T024315.SAFE/GRANULE/L2A_T55GEN_A049963_20260930T000221/IMG_DATA/R10m/T55GEN_20260930T000219_TCI_10m.tif"</span></span>
-<span><span class="co">#&gt;  [5] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DP/2026/09/30/S2B_MSIL2A_20260930T000219_N0513_R030_T55GDP_20260930T024315.SAFE/GRANULE/L2A_T55GDP_A049963_20260930T000221/IMG_DATA/R10m/T55GDP_20260930T000219_TCI_10m.tif"</span></span>
-<span><span class="co">#&gt;  [6] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DN/2026/09/30/S2B_MSIL2A_20260930T000219_N0513_R030_T55GDN_20260930T024315.SAFE/GRANULE/L2A_T55GDN_A049963_20260930T000221/IMG_DATA/R10m/T55GDN_20260930T000219_TCI_10m.tif"</span></span>
-<span><span class="co">#&gt;  [7] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/EP/2026/09/25/S2C_MSIL2A_20260925T000221_N0513_R030_T55GEP_20260925T021911.SAFE/GRANULE/L2A_T55GEP_A010725_20260925T000649/IMG_DATA/R10m/T55GEP_20260925T000221_TCI_10m.tif"</span></span>
-<span><span class="co">#&gt;  [8] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/EN/2026/09/25/S2C_MSIL2A_20260925T000221_N0513_R030_T55GEN_20260925T021911.SAFE/GRANULE/L2A_T55GEN_A010725_20260925T000649/IMG_DATA/R10m/T55GEN_20260925T000221_TCI_10m.tif"</span></span>
-<span><span class="co">#&gt;  [9] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DP/2026/09/25/S2C_MSIL2A_20260925T000221_N0513_R030_T55GDP_20260925T021911.SAFE/GRANULE/L2A_T55GDP_A010725_20260925T000649/IMG_DATA/R10m/T55GDP_20260925T000221_TCI_10m.tif"</span></span>
-<span><span class="co">#&gt; [10] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DN/2026/09/25/S2C_MSIL2A_20260925T000221_N0513_R030_T55GDN_20260925T021911.SAFE/GRANULE/L2A_T55GDN_A010725_20260925T000649/IMG_DATA/R10m/T55GDN_20260925T000221_TCI_10m.tif"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DP/2026/09/30/S2A_MSIL2A_20260930T001241_N0513_R073_T55GDP_20260930T044108.SAFE/GRANULE/L2A_T55GDP_A058872_20260930T001244/IMG_DATA/R10m/T55GDP_20260930T001241_TCI_10m.tif"</span></span>
+<span><span class="co">#&gt; [2] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DN/2026/09/30/S2A_MSIL2A_20260930T001241_N0513_R073_T55GDN_20260930T044108.SAFE/GRANULE/L2A_T55GDN_A058872_20260930T001244/IMG_DATA/R10m/T55GDN_20260930T001241_TCI_10m.tif"</span></span>
+<span><span class="co">#&gt; [3] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/EP/2026/09/30/S2B_MSIL2A_20260930T000219_N0513_R030_T55GEP_20260930T024315.SAFE/GRANULE/L2A_T55GEP_A049963_20260930T000221/IMG_DATA/R10m/T55GEP_20260930T000219_TCI_10m.tif"</span></span>
+<span><span class="co">#&gt; [4] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/EN/2026/09/30/S2B_MSIL2A_20260930T000219_N0513_R030_T55GEN_20260930T024315.SAFE/GRANULE/L2A_T55GEN_A049963_20260930T000221/IMG_DATA/R10m/T55GEN_20260930T000219_TCI_10m.tif"</span></span>
+<span><span class="co">#&gt; [5] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DP/2026/09/30/S2B_MSIL2A_20260930T000219_N0513_R030_T55GDP_20260930T024315.SAFE/GRANULE/L2A_T55GDP_A049963_20260930T000221/IMG_DATA/R10m/T55GDP_20260930T000219_TCI_10m.tif"</span></span>
+<span><span class="co">#&gt; [6] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DN/2026/09/30/S2B_MSIL2A_20260930T000219_N0513_R030_T55GDN_20260930T024315.SAFE/GRANULE/L2A_T55GDN_A049963_20260930T000221/IMG_DATA/R10m/T55GDN_20260930T000219_TCI_10m.tif"</span></span></code></pre></div>
 <p>There are image tile servers:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/dsn-sources.html">wms_arcgis_mapserver_ESRI.WorldImagery_tms</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -132,9 +127,9 @@
 <p>And a very specific sea ice source:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/nsidc_seaice.html">nsidc_seaice</a></span><span class="op">(</span>hemisphere <span class="op">=</span> <span class="st">"south"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/vsicurl/https://noaadata.apps.nsidc.org/NOAA/G02135/south/daily/geotiff/2026/09_Sep/S_20260923_concentration_v4.0.tif"</span></span>
+<span><span class="co">#&gt; [1] "/vsicurl/https://noaadata.apps.nsidc.org/NOAA/G02135/south/daily/geotiff/2026/09_Sep/S_20260924_concentration_v4.0.tif"</span></span>
 <span><span class="fu"><a href="reference/nsidc_seaice.html">nsidc_seaice</a></span><span class="op">(</span>hemisphere <span class="op">=</span> <span class="st">"north"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/vsicurl/https://noaadata.apps.nsidc.org/NOAA/G02135/north/daily/geotiff/2026/09_Sep/N_20260923_concentration_v4.0.tif"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "/vsicurl/https://noaadata.apps.nsidc.org/NOAA/G02135/north/daily/geotiff/2026/09_Sep/N_20260924_concentration_v4.0.tif"</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>

@@ -41,9 +41,8 @@ CGAZ_sql(c("New Zealand", "Australia")) ## a SQL query for the CGAZ polygons
 cop30()  ## a global 30m elevation data set 
 #> [1] "/vsicurl/https://opentopography.s3.sdsc.edu/raster/COP30/COP30_hh.vrt"
 
-
 mpc()  ## return STAC collections for use with GDAL
-#> [1] "STACIT:\"https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=sentinel-2-l2a&bbox=146.5,-43.2,147.5,-42.2&datetime=2026-09-25T00:00:00Z/2026-10-01T00:00:00Z\""
+#> [1] "STACIT:\"https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=sentinel-2-l2a&bbox=146.5,-43.2,147.5,-42.2&datetime=2026-09-26T00:00:00Z/2026-10-02T00:00:00Z\""
 
 mpc( datetime = as.Date(c("2019-06-01", "2019-08-01")), 
     bbox = c(-148.56, -147.44, 60.80, 61.18), asset = "visual")
@@ -53,16 +52,12 @@ mpc( datetime = as.Date(c("2019-06-01", "2019-08-01")),
 js <- jsonlite::fromJSON(mpc(stacit  = F))
 ## do it how you like
 js$features$assets$visual$href
-#>  [1] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DP/2026/09/30/S2A_MSIL2A_20260930T001241_N0513_R073_T55GDP_20260930T044108.SAFE/GRANULE/L2A_T55GDP_A058872_20260930T001244/IMG_DATA/R10m/T55GDP_20260930T001241_TCI_10m.tif"
-#>  [2] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DN/2026/09/30/S2A_MSIL2A_20260930T001241_N0513_R073_T55GDN_20260930T044108.SAFE/GRANULE/L2A_T55GDN_A058872_20260930T001244/IMG_DATA/R10m/T55GDN_20260930T001241_TCI_10m.tif"
-#>  [3] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/EP/2026/09/30/S2B_MSIL2A_20260930T000219_N0513_R030_T55GEP_20260930T024315.SAFE/GRANULE/L2A_T55GEP_A049963_20260930T000221/IMG_DATA/R10m/T55GEP_20260930T000219_TCI_10m.tif"
-#>  [4] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/EN/2026/09/30/S2B_MSIL2A_20260930T000219_N0513_R030_T55GEN_20260930T024315.SAFE/GRANULE/L2A_T55GEN_A049963_20260930T000221/IMG_DATA/R10m/T55GEN_20260930T000219_TCI_10m.tif"
-#>  [5] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DP/2026/09/30/S2B_MSIL2A_20260930T000219_N0513_R030_T55GDP_20260930T024315.SAFE/GRANULE/L2A_T55GDP_A049963_20260930T000221/IMG_DATA/R10m/T55GDP_20260930T000219_TCI_10m.tif"
-#>  [6] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DN/2026/09/30/S2B_MSIL2A_20260930T000219_N0513_R030_T55GDN_20260930T024315.SAFE/GRANULE/L2A_T55GDN_A049963_20260930T000221/IMG_DATA/R10m/T55GDN_20260930T000219_TCI_10m.tif"
-#>  [7] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/EP/2026/09/25/S2C_MSIL2A_20260925T000221_N0513_R030_T55GEP_20260925T021911.SAFE/GRANULE/L2A_T55GEP_A010725_20260925T000649/IMG_DATA/R10m/T55GEP_20260925T000221_TCI_10m.tif"
-#>  [8] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/EN/2026/09/25/S2C_MSIL2A_20260925T000221_N0513_R030_T55GEN_20260925T021911.SAFE/GRANULE/L2A_T55GEN_A010725_20260925T000649/IMG_DATA/R10m/T55GEN_20260925T000221_TCI_10m.tif"
-#>  [9] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DP/2026/09/25/S2C_MSIL2A_20260925T000221_N0513_R030_T55GDP_20260925T021911.SAFE/GRANULE/L2A_T55GDP_A010725_20260925T000649/IMG_DATA/R10m/T55GDP_20260925T000221_TCI_10m.tif"
-#> [10] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DN/2026/09/25/S2C_MSIL2A_20260925T000221_N0513_R030_T55GDN_20260925T021911.SAFE/GRANULE/L2A_T55GDN_A010725_20260925T000649/IMG_DATA/R10m/T55GDN_20260925T000221_TCI_10m.tif"
+#> [1] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DP/2026/09/30/S2A_MSIL2A_20260930T001241_N0513_R073_T55GDP_20260930T044108.SAFE/GRANULE/L2A_T55GDP_A058872_20260930T001244/IMG_DATA/R10m/T55GDP_20260930T001241_TCI_10m.tif"
+#> [2] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DN/2026/09/30/S2A_MSIL2A_20260930T001241_N0513_R073_T55GDN_20260930T044108.SAFE/GRANULE/L2A_T55GDN_A058872_20260930T001244/IMG_DATA/R10m/T55GDN_20260930T001241_TCI_10m.tif"
+#> [3] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/EP/2026/09/30/S2B_MSIL2A_20260930T000219_N0513_R030_T55GEP_20260930T024315.SAFE/GRANULE/L2A_T55GEP_A049963_20260930T000221/IMG_DATA/R10m/T55GEP_20260930T000219_TCI_10m.tif"
+#> [4] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/EN/2026/09/30/S2B_MSIL2A_20260930T000219_N0513_R030_T55GEN_20260930T024315.SAFE/GRANULE/L2A_T55GEN_A049963_20260930T000221/IMG_DATA/R10m/T55GEN_20260930T000219_TCI_10m.tif"
+#> [5] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DP/2026/09/30/S2B_MSIL2A_20260930T000219_N0513_R030_T55GDP_20260930T024315.SAFE/GRANULE/L2A_T55GDP_A049963_20260930T000221/IMG_DATA/R10m/T55GDP_20260930T000219_TCI_10m.tif"
+#> [6] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DN/2026/09/30/S2B_MSIL2A_20260930T000219_N0513_R030_T55GDN_20260930T024315.SAFE/GRANULE/L2A_T55GDN_A049963_20260930T000221/IMG_DATA/R10m/T55GDN_20260930T000219_TCI_10m.tif"
 ```
 
 There are image tile servers:
@@ -81,9 +76,9 @@ And a very specific sea ice source:
 
 ``` r
 nsidc_seaice(hemisphere = "south")
-#> [1] "/vsicurl/https://noaadata.apps.nsidc.org/NOAA/G02135/south/daily/geotiff/2026/09_Sep/S_20260923_concentration_v4.0.tif"
+#> [1] "/vsicurl/https://noaadata.apps.nsidc.org/NOAA/G02135/south/daily/geotiff/2026/09_Sep/S_20260924_concentration_v4.0.tif"
 nsidc_seaice(hemisphere = "north")
-#> [1] "/vsicurl/https://noaadata.apps.nsidc.org/NOAA/G02135/north/daily/geotiff/2026/09_Sep/N_20260923_concentration_v4.0.tif"
+#> [1] "/vsicurl/https://noaadata.apps.nsidc.org/NOAA/G02135/north/daily/geotiff/2026/09_Sep/N_20260924_concentration_v4.0.tif"
 ```
 
 ## Code of Conduct

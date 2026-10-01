@@ -47,7 +47,6 @@ CGAZ_sql(c("New Zealand", "Australia")) ## a SQL query for the CGAZ polygons
 
 cop30()  ## a global 30m elevation data set 
 
-
 mpc()  ## return STAC collections for use with GDAL
 
 mpc( datetime = as.Date(c("2019-06-01", "2019-08-01")), 

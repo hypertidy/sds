@@ -9,6 +9,9 @@ usgs_seamless(vsicurl = TRUE)
 \arguments{
 \item{vsicurl}{if TRUE prefix /vsicurl}
 }
+\value{
+character string, a GDAL data source name for the USGS seamless DEM
+}
 \description{
 USGS seamless DEM
 }

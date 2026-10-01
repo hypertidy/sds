@@ -6,6 +6,12 @@
 \usage{
 addrock()
 }
+\value{
+character string, a GDAL data source name for the Antarctic rock outcrop polygons
+}
 \description{
 https://data.bas.ac.uk/full-record.php?id=GB/NERC/BAS/PDC/01409
+}
+\examples{
+addrock()
 }

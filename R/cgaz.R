@@ -4,6 +4,8 @@
 #' CGAZ() returns the DSN, a shapefile of geo boundaries, CGAZ_sql() returns SQL suitable for use
 #' with GDAL, for the names or codes of countries.
 #' @param old logical, return the old slow zipped shapefile or the new Parquet copy
+#' @return character string; `CGAZ()` returns a GDAL data source name and
+#'   `CGAZ_sql()` returns an SQL query string
 #' @export
 #' @name CGAZ
 #' @aliases CGAZ_sql

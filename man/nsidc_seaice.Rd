@@ -35,5 +35,4 @@ data were only every two days from date, until a later time (FIXME get these det
 }
 \examples{
 nsidc_seaice("2023-06-27")
-#readBin(con <- url(nsidc_seaice("2023-06-27", vsi = FALSE), open = "rb"), "raw"); close(con)
 }

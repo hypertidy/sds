@@ -3,16 +3,17 @@
 \name{dsn-sources}
 \alias{dsn-sources}
 \alias{wms_arcgis_mapserver_ESRI.WorldImagery_tms}
-\alias{wms_arcgis_mapserver_tms}
+\alias{wms_bluemarble_s3_tms}
 \alias{wms_googlehybrid_tms}
-\alias{wms_googleterrainstreets_tms}
 \alias{wms_virtualearth}
-\alias{wms_virtualearth_street}
-\alias{wms_openstreetmap_tms}
-\alias{wms_amazon_elevation}
 \alias{wms_ESA_worldcover_2020_tms}
 \alias{wms_mapbox_satellite}
+\alias{wms_amazon_elevation}
 \alias{wms_mapbox_terrain}
+\alias{wms_openstreetmap_tms}
+\alias{wms_googleterrainstreets_tms}
+\alias{wms_virtualearth_street}
+\alias{wms_arcgis_mapserver_tms}
 \alias{nasadem}
 \alias{cop90}
 \alias{cop30}
@@ -21,25 +22,27 @@
 \usage{
 wms_arcgis_mapserver_ESRI.WorldImagery_tms()
 
-wms_arcgis_mapserver_tms()
+wms_bluemarble_s3_tms()
 
 wms_googlehybrid_tms()
 
-wms_googleterrainstreets_tms()
-
 wms_virtualearth()
-
-wms_virtualearth_street()
-
-wms_openstreetmap_tms()
-
-wms_amazon_elevation()
 
 wms_ESA_worldcover_2020_tms()
 
 wms_mapbox_satellite()
 
+wms_amazon_elevation()
+
 wms_mapbox_terrain()
+
+wms_openstreetmap_tms()
+
+wms_googleterrainstreets_tms()
+
+wms_virtualearth_street()
+
+wms_arcgis_mapserver_tms()
 
 nasadem()
 
@@ -49,10 +52,14 @@ cop30()
 
 srtm15()
 }
+\value{
+character string, a GDAL data source name (a 'GDAL_WMS' XML
+description or a '/vsicurl/' URL)
+}
 \description{
-Raster and imagery online. Each function returns a GDAL-ready data source
-name; for the \verb{wms_*} family that is a 'GDAL_WMS' XML recipe, stored as a
-file in the package (see \code{dsn_list(kind = "xml_file")}). The two mapbox
-functions return a template with a \verb{\%s} slot for an access token and are
-not registry rows.
+Raster and imagery online
+}
+\examples{
+cop30()
+wms_openstreetmap_tms()
 }

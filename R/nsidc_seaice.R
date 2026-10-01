@@ -17,7 +17,6 @@
 #'
 #' @examples
 #' nsidc_seaice("2023-06-27")
-#' #readBin(con <- url(nsidc_seaice("2023-06-27", vsi = FALSE), open = "rb"), "raw"); close(con)
 nsidc_seaice <- function(date, hemisphere = c("south", "north"),
                          temporal = c("daily", "monthly"),
                          varname = c("concentration", "extent"), vsi = TRUE) {

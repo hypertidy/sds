@@ -2,7 +2,7 @@
 % Please edit documentation in R/sources.R
 \name{dea_250m_dem}
 \alias{dea_250m_dem}
-\title{DEA 250m dem}
+\title{DEA 250m dem (superseded)}
 \usage{
 dea_250m_dem(vsi = TRUE)
 }
@@ -10,13 +10,11 @@ dea_250m_dem(vsi = TRUE)
 \item{vsi}{include the 'vsicurl' prefix (\code{TRUE} is default)}
 }
 \value{
-character string, URL to online raster
+errors; the source is superseded (see Description)
 }
 \description{
-Australian Bathymetry and Topography 2023 250m MSL 'COG' (AusSeabed).
-}
-\details{
-The 2023 grid was superseded on 2024-12-05 by AusBathyTopo 250m 2024
-(eCat 150050, doi:10.26186/150050) and the 2023 object removed, so this
-function currently errors with that information (see the registry row).
+Australian Bathymetry and Topography 2023 250m MSL 'COG' (AusSeabed). This
+source is dead: the 2023 S3 object was removed when it was superseded by
+AusBathyTopo 250m 2024 (doi:10.26186/150050). Calling this function errors
+with that successor information.
 }

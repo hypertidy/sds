@@ -30,7 +30,7 @@ This shows some of the variety of the sources available.
 library(sds)
 
 gebco() ## a global seamless topography (bathymetry and elevation)
-#> [1] "/vsicurl/https://projects.pawsey.org.au/idea-gebco-tif/GEBCO_2025.tif"
+#> [1] "/vsicurl/https://data.source.coop/ausantarctic/gebco/GEBCO_2026.tif"
 
 CGAZ()  ## a global nations boundaries dataset
 #> [1] "/vsicurl/https://github.com/mdsumner/geoboundaries/releases/download/latest/geoBoundariesCGAZ_ADM0.parquet"
@@ -43,7 +43,7 @@ cop30()  ## a global 30m elevation data set
 
 
 mpc()  ## return STAC collections for use with GDAL
-#> [1] "STACIT:\"https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=sentinel-2-l2a&bbox=146.5,-43.2,147.5,-42.2&datetime=2026-07-31T00:00:00Z/2026-08-06T00:00:00Z\""
+#> [1] "STACIT:\"https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=sentinel-2-l2a&bbox=146.5,-43.2,147.5,-42.2&datetime=2026-09-25T00:00:00Z/2026-10-01T00:00:00Z\""
 
 mpc( datetime = as.Date(c("2019-06-01", "2019-08-01")), 
     bbox = c(-148.56, -147.44, 60.80, 61.18), asset = "visual")
@@ -53,23 +53,25 @@ mpc( datetime = as.Date(c("2019-06-01", "2019-08-01")),
 js <- jsonlite::fromJSON(mpc(stacit  = F))
 ## do it how you like
 js$features$assets$visual$href
-#> [1] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DP/2026/08/04/S2B_MSIL2A_20260804T001109_N0512_R073_T55GDP_20260804T032649.SAFE/GRANULE/L2A_T55GDP_A049148_20260804T001400/IMG_DATA/R10m/T55GDP_20260804T001109_TCI_10m.tif"
-#> [2] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DN/2026/08/04/S2B_MSIL2A_20260804T001109_N0512_R073_T55GDN_20260804T032649.SAFE/GRANULE/L2A_T55GDN_A049148_20260804T001400/IMG_DATA/R10m/T55GDN_20260804T001109_TCI_10m.tif"
-#> [3] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DP/2026/08/01/S2A_MSIL2A_20260801T001251_N0512_R073_T55GDP_20260801T093911.SAFE/GRANULE/L2A_T55GDP_A058014_20260801T001252/IMG_DATA/R10m/T55GDP_20260801T001251_TCI_10m.tif"
-#> [4] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DN/2026/08/01/S2A_MSIL2A_20260801T001251_N0512_R073_T55GDN_20260801T093911.SAFE/GRANULE/L2A_T55GDN_A058014_20260801T001252/IMG_DATA/R10m/T55GDN_20260801T001251_TCI_10m.tif"
-#> [5] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/EP/2026/08/01/S2B_MSIL2A_20260801T000219_N0512_R030_T55GEP_20260801T031303.SAFE/GRANULE/L2A_T55GEP_A049105_20260801T000702/IMG_DATA/R10m/T55GEP_20260801T000219_TCI_10m.tif"
-#> [6] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/EN/2026/08/01/S2B_MSIL2A_20260801T000219_N0512_R030_T55GEN_20260801T031303.SAFE/GRANULE/L2A_T55GEN_A049105_20260801T000702/IMG_DATA/R10m/T55GEN_20260801T000219_TCI_10m.tif"
-#> [7] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DP/2026/08/01/S2B_MSIL2A_20260801T000219_N0512_R030_T55GDP_20260801T031303.SAFE/GRANULE/L2A_T55GDP_A049105_20260801T000702/IMG_DATA/R10m/T55GDP_20260801T000219_TCI_10m.tif"
-#> [8] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DN/2026/08/01/S2B_MSIL2A_20260801T000219_N0512_R030_T55GDN_20260801T031303.SAFE/GRANULE/L2A_T55GDN_A049105_20260801T000702/IMG_DATA/R10m/T55GDN_20260801T000219_TCI_10m.tif"
+#>  [1] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DP/2026/09/30/S2A_MSIL2A_20260930T001241_N0513_R073_T55GDP_20260930T044108.SAFE/GRANULE/L2A_T55GDP_A058872_20260930T001244/IMG_DATA/R10m/T55GDP_20260930T001241_TCI_10m.tif"
+#>  [2] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DN/2026/09/30/S2A_MSIL2A_20260930T001241_N0513_R073_T55GDN_20260930T044108.SAFE/GRANULE/L2A_T55GDN_A058872_20260930T001244/IMG_DATA/R10m/T55GDN_20260930T001241_TCI_10m.tif"
+#>  [3] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/EP/2026/09/30/S2B_MSIL2A_20260930T000219_N0513_R030_T55GEP_20260930T024315.SAFE/GRANULE/L2A_T55GEP_A049963_20260930T000221/IMG_DATA/R10m/T55GEP_20260930T000219_TCI_10m.tif"
+#>  [4] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/EN/2026/09/30/S2B_MSIL2A_20260930T000219_N0513_R030_T55GEN_20260930T024315.SAFE/GRANULE/L2A_T55GEN_A049963_20260930T000221/IMG_DATA/R10m/T55GEN_20260930T000219_TCI_10m.tif"
+#>  [5] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DP/2026/09/30/S2B_MSIL2A_20260930T000219_N0513_R030_T55GDP_20260930T024315.SAFE/GRANULE/L2A_T55GDP_A049963_20260930T000221/IMG_DATA/R10m/T55GDP_20260930T000219_TCI_10m.tif"
+#>  [6] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DN/2026/09/30/S2B_MSIL2A_20260930T000219_N0513_R030_T55GDN_20260930T024315.SAFE/GRANULE/L2A_T55GDN_A049963_20260930T000221/IMG_DATA/R10m/T55GDN_20260930T000219_TCI_10m.tif"
+#>  [7] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/EP/2026/09/25/S2C_MSIL2A_20260925T000221_N0513_R030_T55GEP_20260925T021911.SAFE/GRANULE/L2A_T55GEP_A010725_20260925T000649/IMG_DATA/R10m/T55GEP_20260925T000221_TCI_10m.tif"
+#>  [8] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/EN/2026/09/25/S2C_MSIL2A_20260925T000221_N0513_R030_T55GEN_20260925T021911.SAFE/GRANULE/L2A_T55GEN_A010725_20260925T000649/IMG_DATA/R10m/T55GEN_20260925T000221_TCI_10m.tif"
+#>  [9] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DP/2026/09/25/S2C_MSIL2A_20260925T000221_N0513_R030_T55GDP_20260925T021911.SAFE/GRANULE/L2A_T55GDP_A010725_20260925T000649/IMG_DATA/R10m/T55GDP_20260925T000221_TCI_10m.tif"
+#> [10] "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/55/G/DN/2026/09/25/S2C_MSIL2A_20260925T000221_N0513_R030_T55GDN_20260925T021911.SAFE/GRANULE/L2A_T55GDN_A010725_20260925T000649/IMG_DATA/R10m/T55GDN_20260925T000221_TCI_10m.tif"
 ```
 
 There are image tile servers:
 
 ``` r
 wms_arcgis_mapserver_ESRI.WorldImagery_tms()
-#> [1] "<GDAL_WMS><Service name=\"TMS\"><ServerUrl>http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/${z}/${y}/${x}</ServerUrl></Service><DataWindow><UpperLeftX>-20037508.34</UpperLeftX><UpperLeftY>20037508.34</UpperLeftY><LowerRightX>20037508.34</LowerRightX><LowerRightY>-20037508.34</LowerRightY><TileLevel>17</TileLevel><TileCountX>1</TileCountX><TileCountY>1</TileCountY><YOrigin>top</YOrigin></DataWindow><Projection>EPSG:900913</Projection><BlockSizeX>256</BlockSizeX><BlockSizeY>256</BlockSizeY><BandsCount>3</BandsCount><MaxConnections>10</MaxConnections><Cache /><ZeroBlockHttpCodes>204,404,403</ZeroBlockHttpCodes></GDAL_WMS>"
+#> [1] "<GDAL_WMS>\n  <Service name=\"TMS\">\n    <ServerUrl>http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/${z}/${y}/${x}</ServerUrl>\n  </Service>\n  <DataWindow>\n    <UpperLeftX>-20037508.34</UpperLeftX>\n    <UpperLeftY>20037508.34</UpperLeftY>\n    <LowerRightX>20037508.34</LowerRightX>\n    <LowerRightY>-20037508.34</LowerRightY>\n    <TileLevel>17</TileLevel>\n    <TileCountX>1</TileCountX>\n    <TileCountY>1</TileCountY>\n    <YOrigin>top</YOrigin>\n  </DataWindow>\n  <Projection>EPSG:900913</Projection>\n  <BlockSizeX>256</BlockSizeX>\n  <BlockSizeY>256</BlockSizeY>\n  <BandsCount>3</BandsCount>\n  <MaxConnections>10</MaxConnections>\n  <Cache/>\n  <ZeroBlockHttpCodes>204,404,403</ZeroBlockHttpCodes>\n</GDAL_WMS>"
 wms_openstreetmap_tms()
-#> [1] "<GDAL_WMS><Service name=\"TMS\"><ServerUrl>https://tile.openstreetmap.org/${z}/${x}/${y}.png</ServerUrl></Service><DataWindow><UpperLeftX>-20037508.34</UpperLeftX><UpperLeftY>20037508.34</UpperLeftY><LowerRightX>20037508.34</LowerRightX><LowerRightY>-20037508.34</LowerRightY><TileLevel>18</TileLevel><TileCountX>1</TileCountX><TileCountY>1</TileCountY><YOrigin>top</YOrigin></DataWindow><Projection>EPSG:3857</Projection><BlockSizeX>256</BlockSizeX><BlockSizeY>256</BlockSizeY><BandsCount>3</BandsCount><!--<UserAgent>Please add a specific user agent text, to avoid the default one being used, and potentially blocked by OSM servers in case a too big usage of it would be seen</UserAgent>--><Cache /></GDAL_WMS>"
+#> [1] "<GDAL_WMS>\n  <Service name=\"TMS\">\n    <ServerUrl>https://tile.openstreetmap.org/${z}/${x}/${y}.png</ServerUrl>\n  </Service>\n  <DataWindow>\n    <UpperLeftX>-20037508.34</UpperLeftX>\n    <UpperLeftY>20037508.34</UpperLeftY>\n    <LowerRightX>20037508.34</LowerRightX>\n    <LowerRightY>-20037508.34</LowerRightY>\n    <TileLevel>18</TileLevel>\n    <TileCountX>1</TileCountX>\n    <TileCountY>1</TileCountY>\n    <YOrigin>top</YOrigin>\n  </DataWindow>\n  <Projection>EPSG:3857</Projection>\n  <BlockSizeX>256</BlockSizeX>\n  <BlockSizeY>256</BlockSizeY>\n  <BandsCount>3</BandsCount>\n  <!-- Add a specific UserAgent for sustained use, per OSM tile usage policy -->\n  <Cache />\n</GDAL_WMS>"
 
 ## not shown else will reveal my INSTANCE_ID
 wms <- sentinel2_wms()
@@ -79,9 +81,9 @@ And a very specific sea ice source:
 
 ``` r
 nsidc_seaice(hemisphere = "south")
-#> [1] "/vsicurl/https://noaadata.apps.nsidc.org/NOAA/G02135/south/daily/geotiff/2026/07_Jul/S_20260729_concentration_v4.0.tif"
+#> [1] "/vsicurl/https://noaadata.apps.nsidc.org/NOAA/G02135/south/daily/geotiff/2026/09_Sep/S_20260923_concentration_v4.0.tif"
 nsidc_seaice(hemisphere = "north")
-#> [1] "/vsicurl/https://noaadata.apps.nsidc.org/NOAA/G02135/north/daily/geotiff/2026/07_Jul/N_20260729_concentration_v4.0.tif"
+#> [1] "/vsicurl/https://noaadata.apps.nsidc.org/NOAA/G02135/north/daily/geotiff/2026/09_Sep/N_20260923_concentration_v4.0.tif"
 ```
 
 ## Code of Conduct

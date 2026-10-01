@@ -10,3 +10,4 @@
 ^\.claude$
 ^cran-comments\.md$
 ^linkcheck-report\.md$
+^\.Rhistory$

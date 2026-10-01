@@ -14,6 +14,10 @@ CGAZ_sql(codes)
 
 \item{codes}{a list of iso3 country codes, or country names (this is a bit sketchy)}
 }
+\value{
+character string; \code{CGAZ()} returns a GDAL data source name and
+\code{CGAZ_sql()} returns an SQL query string
+}
 \description{
 CGAZ() returns the DSN, a shapefile of geo boundaries, CGAZ_sql() returns SQL suitable for use
 with GDAL, for the names or codes of countries.

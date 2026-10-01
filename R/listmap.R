@@ -1,22 +1,15 @@
-#' Tasmanian address query (theLIST)
+#' Tasmania theLIST address query
 #'
-#' Build a query URI against the LIST OpenData WFS address layer, returning
-#' EASTING, NORTHING, and PID for a street address.
+#' Build a query URI for the Tasmanian theLIST address service.
 #'
-#' @param address character vector of number, street, locality e.g.
-#'   `c(2862, "LYELL", "HAYES")`
+#' @param address character vector of length 3: street number, street name,
+#'   and locality
 #'
 #' @return string URI for List service
 #' @export
 #'
 #' @examples
-#' x <- list_address(c(2862, "LYELL",  "HAYES"))
-#' #vals <- jsonlite::fromJSON(readr::read_file ( x), simplifyVector = F)$features[[1]]$attributes
-#' #plot(v <- vect(list_parcel(vals$PID)))
-#' #Sys.setenv("GDAL_DISABLE_READDIR_ON_OPEN"="TRUE")
-#' #dem <- rast(dsn("tasmania_dem_2m"))
-#' #plotRGB(project(rast(ortho), rast(v, res = .1), by_util = TRUE))
-#' #plot(v, add = T)
+#' list_address(c(2862, "LYELL", "HAYES"))
 list_address <- function(address) {
   ## if any spaces in address replace with "+"
   address <- gsub(" ", "+", address)

@@ -6,7 +6,7 @@
 \alias{sds-package}
 \title{sds: Spatial Data Sources}
 \description{
-Functions for descriptions of spatial data sources that can be read directly with or without download. Most sources are readable by 'GDAL' software. There are functions for imagery, elevation, and a variety of easily accessible data streams including image tile servers, links to online files, and geographic data services.
+Descriptions of spatial data sources that can be read directly with or without download. Most sources are readable by 'GDAL' software. There are functions for imagery, elevation, and a variety of easily accessible data streams including image tile servers, links to online files, and geographic data services.
 }
 \seealso{
 Useful links:
@@ -17,11 +17,11 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Michael Sumner \email{mdsumner@gmail.com}
+\strong{Maintainer}: Michael Sumner \email{mdsumner@gmail.com} [copyright holder]
 
 Authors:
 \itemize{
-  \item Michael Sumner \email{mdsumner@gmail.com}
+  \item Michael Sumner \email{mdsumner@gmail.com} [copyright holder]
 }
 
 }

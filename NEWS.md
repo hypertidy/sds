@@ -32,6 +32,13 @@
   is promoted to named rows (sa/qld/nsw/wa/vic), adjudicated by the weekly
   link check.
 
+* Link checker hardening: WMS `raw` rows are now probed via `GetCapabilities`
+  (a bare `GetMap` string cannot be validated), the weekly run appends a
+  per-source history to `.github/linkcheck-log.csv` so link rot is tracked
+  over time, and the report issue's label is created if missing. The audit
+  retired `ga_canberra_2014_wms` (its GA service returns HTTP 400 even for
+  `GetCapabilities`).
+
 * Removed unexported duplicates superseded by registry rows (the usgs_*
   WMTS functions, `tasmap_sources()`, the geoserver helpers); all remain
   available via `dsn()` / `dsn_list()`.

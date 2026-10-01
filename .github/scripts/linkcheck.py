@@ -3,6 +3,8 @@
 
 Reads inst/extdata/sds-registry.csv, derives a checkable URL per row by kind,
 HEAD-requests each (with a GET range fallback), and writes a markdown report.
+On full (non-PR) runs it also appends a per-source row to a history log at
+.github/linkcheck-log.csv so link rot can be tracked over time.
 
 Exit status: 0 if all checked rows pass, 1 otherwise.
 
@@ -10,10 +12,12 @@ Usage:
   linkcheck.py [--names name1,name2]   # restrict to specific rows (PR mode)
   linkcheck.py --dry-run               # print derived URLs, no network
 """
-import csv, subprocess, sys, time, os
+import csv, subprocess, sys, time, os, datetime
 
 REGISTRY = "inst/extdata/sds-registry.csv"
 SOURCES_DIR = "inst/sources"
+LOG = ".github/linkcheck-log.csv"
+LOG_FIELDS = ["date", "name", "kind", "code", "ok"]
 TIMEOUT = "30"
 
 def check_url(url):
@@ -50,10 +54,29 @@ def derive(row):
     if kind == "raw":
         i = url.find(":")
         u = url[i + 1:] if 0 < i < 10 else url
+        # A WMS GetMap request can't be validated directly (it needs
+        # WIDTH/HEIGHT and often rejects an incomplete request). Probe
+        # GetCapabilities on the service base instead.
+        low = u.lower()
+        if "service=wms" in low or "request=getmap" in low:
+            base = u.split("?", 1)[0]
+            u = base + "?SERVICE=WMS&REQUEST=GetCapabilities"
         return ("url", u)
     if kind in ("xml_file", "vrt_file"):
         return ("file", os.path.join(SOURCES_DIR, url))
     return ("url", url)
+
+def append_log(results):
+    """Append one row per checked source to the history log."""
+    today = datetime.date.today().isoformat()
+    exists = os.path.exists(LOG)
+    os.makedirs(os.path.dirname(LOG), exist_ok=True)
+    with open(LOG, "a", newline="") as f:
+        w = csv.writer(f)
+        if not exists:
+            w.writerow(LOG_FIELDS)
+        for name, kind, code, ok in results:
+            w.writerow([today, name, kind, code, "ok" if ok else "fail"])
 
 def main(argv):
     names = None
@@ -68,6 +91,7 @@ def main(argv):
         rows = [r for r in rows if r["name"] in names]
 
     failures, checked, skipped = [], 0, 0
+    verdict = {}  # name -> (name, kind, code, ok), final after retry
     for row in rows:
         mode, target = derive(row)
         if mode == "skip":
@@ -85,6 +109,7 @@ def main(argv):
             ok = 200 <= code < 400
             time.sleep(0.5)
         print(f"{'ok ' if ok else 'FAIL'} {code!s:>7} {row['name']:32s} {target}")
+        verdict[row["name"]] = (row["name"], row["kind"], code, ok)
         if not ok:
             failures.append((row["name"], row["kind"], str(code), target))
 
@@ -99,7 +124,10 @@ def main(argv):
             continue
         time.sleep(2)
         c2 = check_url(target)
-        if not (200 <= c2 < 400):
+        if 200 <= c2 < 400:
+            verdict[name] = (name, kind, c2, True)   # recovered
+        else:
+            verdict[name] = (name, kind, c2, False)
             persistent.append((name, kind, str(c2), target))
 
     with open("linkcheck-report.md", "w") as out:
@@ -116,6 +144,11 @@ def main(argv):
             out.write(f"All {checked} checked sources ok "
                       f"({skipped} skipped).\n")
     print(open("linkcheck-report.md").read())
+
+    ## history log: full runs only (not PR-scoped --names runs)
+    if names is None:
+        append_log(verdict.values())
+
     return 1 if persistent else 0
 
 if __name__ == "__main__":

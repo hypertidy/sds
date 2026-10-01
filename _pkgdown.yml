@@ -1,0 +1,106 @@
+url: https://hypertidy.github.io/sds
+
+template:
+  bootstrap: 5
+  light-switch: true
+  bslib:
+    primary: "#15607A"
+    link-color: "#15607A"
+    border-radius: 0.5rem
+    btn-border-radius: 0.5rem
+
+reference:
+- title: The registry
+  desc: >
+    Look up, list, and inspect named spatial data sources. The registry is the
+    single source of truth; every source function below is a thin shim over
+    `dsn()`.
+  contents:
+  - dsn
+  - dsn_list
+  - dsn_info
+
+- title: Elevation (land)
+  desc: Global and regional digital elevation models.
+  contents:
+  - cop30
+  - cop90
+  - nasadem
+  - srtm15
+  - usgs_seamless
+  - mapterhorn_elevation
+  - tas_dem
+  - rema
+  - rema_v2
+
+- title: Bathymetry & topography
+  desc: Seamless land/sea elevation and bathymetric compilations.
+  contents:
+  - gebco
+  - gebco26
+  - gebco25
+  - gebco24
+  - gebco23
+  - gebco23_bedrock
+  - gebco22
+  - gebco21
+  - gebco19
+  - ibcso
+  - dea_250m_dem
+
+- title: Administrative & vector boundaries
+  desc: Country boundaries and vector features.
+  contents:
+  - CGAZ
+  - CGAZ_sql
+  - gadm
+  - addrock
+
+- title: Imagery & basemaps
+  desc: >
+    Tile servers and WMS/TMS image sources, returned as GDAL data source
+    descriptions.
+  contents:
+  - wms_arcgis_mapserver_ESRI.WorldImagery_tms
+  - wms_arcgis_mapserver_tms
+  - wms_bluemarble_s3_tms
+  - wms_ESA_worldcover_2020_tms
+  - wms_googlehybrid_tms
+  - wms_googleterrainstreets_tms
+  - wms_mapbox_satellite
+  - wms_mapbox_terrain
+  - wms_openstreetmap_tms
+  - wms_virtualearth
+  - wms_virtualearth_street
+  - wms_amazon_elevation
+  - sentinel2_wms
+
+- title: Ocean & climate
+  desc: Sea ice, sea-surface temperature, and ocean colour.
+  contents:
+  - nsidc_seaice
+  - seaice_cdr
+  - ghrsst
+  - mursst_zarr
+  - mursst_time
+  - esacci_chlor_a
+
+- title: STAC catalogs
+  desc: SpatioTemporal Asset Catalog query helpers for use with GDAL.
+  contents:
+  - stacit
+  - mpc
+
+- title: Cadastre (Tasmania)
+  desc: Tasmanian theLIST cadastral services.
+  contents:
+  - list_address
+  - list_parcel_shp
+
+- title: Data
+  contents:
+  - sentinel_grid
+
+- title: Package
+  contents:
+  - sds-package

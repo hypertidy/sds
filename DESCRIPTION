@@ -11,7 +11,7 @@ Description: Descriptions of spatial data sources that can be read
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-URL: https://github.com/hypertidy/sds
+URL: https://github.com/hypertidy/sds, https://hypertidy.github.io/sds/
 BugReports: https://github.com/hypertidy/sds/issues
 Imports: 
     countrycode,

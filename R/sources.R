@@ -110,73 +110,50 @@ gebco <- function(vsi = TRUE) {
 #' @name gebco
 #' @export
 gebco26 <- function(vsi = TRUE) {
-  url <- "https://data.source.coop/ausantarctic/gebco/GEBCO_2026.tif"
-  if (vsi) url <- file.path("/vsicurl", url)
-  url
+  .shim("gebco26", vsi = vsi)
 }
 
 #' @name gebco
 #' @export
 gebco25 <- function(vsi = TRUE) {
-  url <- "https://data.source.coop/ausantarctic/gebco/GEBCO_2025.tif"
-  if (vsi) url <- file.path("/vsicurl", url)
-  url
+  .shim("gebco25", vsi = vsi)
 }
 
 #' @name gebco
 #' @export
 gebco24 <- function(vsi = TRUE) {
-  url <- "https://data.source.coop/ausantarctic/gebco/GEBCO_2024.tif"
-  if (vsi) url <- file.path("/vsicurl", url)
-  url
+  .shim("gebco24", vsi = vsi)
 }
 
 
 #' @name gebco
 #' @export
 gebco21 <- function(vsi = TRUE) {
-  # AADC download endpoint 302-redirects to a short-lived presigned S3 URL, so
-  # we keep the stable API URL and let /vsicurl/ follow the redirect.
-  url <- "https://data.aad.gov.au/eds/api/dataset/e2211189-ff68-4ba0-be09-a8f1dbe02af6/object/download?prefix=GEBCO_2021.tif"
-  if (vsi) url <- file.path("/vsicurl", url)
-  url
+  .shim("gebco21", vsi = vsi)
 }
 
 #' @name gebco
 #' @export
 gebco23_bedrock <- function(vsi = TRUE) {
-  url  <- "https://gebco2023.s3.valeria.science/gebco_2023_sub_ice_topo_cog.tif"
-  if (vsi) url <- file.path("/vsicurl", url)
-  url
+  .shim("gebco23_bedrock", vsi = vsi)
 }
 
 #' @name gebco
 #' @export
 gebco23 <- function(vsi = TRUE) {
-  url <- "https://gebco2023.s3.valeria.science/gebco_2023_land_cog.tif"
-
-  if (vsi) url <- file.path("/vsicurl", url)
-  url
+  .shim("gebco23", vsi = vsi)
 }
 
 #' @name gebco
 #' @export
-gebco22 <- function (vsi = TRUE)
-{
-  url <- "https://gebco2022.s3.valeria.science/gebco_2022_complete_cog.tif"
-  if (vsi)
-    url <- file.path("/vsicurl", url)
-  url
+gebco22 <- function(vsi = TRUE) {
+  .shim("gebco22", vsi = vsi)
 }
 
 #' @name gebco
 #' @export
 gebco19 <- function(vsi = TRUE) {
-  # AADC download endpoint 302-redirects to a short-lived presigned S3 URL, so
-  # we keep the stable API URL and let /vsicurl/ follow the redirect.
-  url <- "https://data.aad.gov.au/eds/api/dataset/ef32700c-bda7-4d97-916f-6ee0d3a4eb4c/object/download?prefix=GEBCO_2019.tif"
-  if (vsi) url <- file.path("/vsicurl", url)
-  url
+  .shim("gebco19", vsi = vsi)
 }
 
 #' REMA reference elevation model of Antarctica

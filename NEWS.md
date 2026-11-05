@@ -1,3 +1,14 @@
+# sds (development version)
+
+* `esri_dark_gray` and `esri_light_gray` ask for the layers by their current
+  names (`Canvas_World_Dark_Gray_Base`, `Canvas_World_Light_Gray_Base`); the
+  old names no longer open.
+
+* `wa_gsd_basemap` is now a GDAL_WMS TMS description of the ArcGIS tile cache
+  (`inst/sources/wa_gsd_basemap.xml`, kind `xml_file`, EPSG:7844). Its WMTS
+  capabilities give the tile matrix origin in lon/lat order for EPSG:7844, so
+  GDAL's WMTS driver found no zoom level.
+
 # sds 0.3.0
 
 * The registry (`inst/extdata/sds-registry.csv`) is now the single source of

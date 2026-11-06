@@ -59,7 +59,7 @@ and "subdataset" are synonomous for 'GDAL'.
 
 ``` r
 mpc()
-#> [1] "STACIT:\"https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=sentinel-2-l2a&bbox=146.5,-43.2,147.5,-42.2&datetime=2026-09-26T00:00:00Z/2026-10-02T00:00:00Z\""
+#> [1] "STACIT:\"https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=sentinel-2-l2a&bbox=146.5,-43.2,147.5,-42.2&datetime=2026-11-01T00:00:00Z/2026-11-07T00:00:00Z\""
 
 ## we can be more general than GDAL, and say do a query to get Parquet for MS Buildings
 

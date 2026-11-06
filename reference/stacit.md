@@ -105,7 +105,7 @@ for Sentinel-2 WMS layer construction
 ``` r
 # Simple bounding box query for today
 stacit(c(140, 145, -43, -40))
-#> [1] "https://earth-search.aws.element84.com/v1/search?collections=sentinel-2-c1-l2a&bbox=140,-43,145,-40&datetime=2026-09-30T00:00:00Z/2026-09-30T23:59:59Z&limit=300"
+#> [1] "https://earth-search.aws.element84.com/v1/search?collections=sentinel-2-c1-l2a&bbox=140,-43,145,-40&datetime=2026-11-05T00:00:00Z/2026-11-05T23:59:59Z&limit=300"
 
 # MGRS grid square for a specific month
 stacit("43DFD", date = "2025-01")
@@ -123,7 +123,7 @@ stacit(c(179, 181, -16, -15), date = "2024-03")
 # Use Planetary Computer instead of Earth Search
 stacit(c(140, 145, -43, -40),
        provider = "https://planetarycomputer.microsoft.com/api/stac/v1/search")
-#> [1] "https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=sentinel-2-c1-l2a&bbox=140,-43,145,-40&datetime=2026-09-30T00:00:00Z/2026-09-30T23:59:59Z&limit=300"
+#> [1] "https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=sentinel-2-c1-l2a&bbox=140,-43,145,-40&datetime=2026-11-05T00:00:00Z/2026-11-05T23:59:59Z&limit=300"
 
 # Query Landsat collection
 stacit(c(140, 145, -43, -40), collections = "landsat-c2-l2", date = "2024")

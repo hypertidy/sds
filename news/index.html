@@ -39,7 +39,12 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.3.0" id="sds-030">sds 0.3.0<a class="anchor" aria-label="anchor" href="#sds-030"></a></h2>
+<h2 class="pkg-version" data-toc-text="development version" id="sds-development-version">sds (development version)<a class="anchor" aria-label="anchor" href="#sds-development-version"></a></h2>
+<ul><li><p><code>esri_dark_gray</code> and <code>esri_light_gray</code> ask for the layers by their current names (<code>Canvas_World_Dark_Gray_Base</code>, <code>Canvas_World_Light_Gray_Base</code>); the old names no longer open.</p></li>
+<li><p><code>wa_gsd_basemap</code> is now a GDAL_WMS TMS description of the ArcGIS tile cache (<code>inst/sources/wa_gsd_basemap.xml</code>, kind <code>xml_file</code>, EPSG:7844). Its WMTS capabilities give the tile matrix origin in lon/lat order for EPSG:7844, so GDAL’s WMTS driver found no zoom level.</p></li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.3.0" id="sds-030">sds 0.3.0<a class="anchor" aria-label="anchor" href="#sds-030"></a></h2><p class="text-muted">CRAN release: 2026-10-13</p>
 <ul><li><p>The registry (<code>inst/extdata/sds-registry.csv</code>) is now the single source of truth for constant sources: the legacy functions (<code><a href="../reference/gebco.html">gebco()</a></code> suite, <code><a href="../reference/dsn-sources.html">cop30()</a></code>, <code><a href="../reference/rema.html">rema()</a></code>, <code><a href="../reference/CGAZ.html">CGAZ()</a></code>, <code><a href="../reference/addrock.html">addrock()</a></code>, <code><a href="../reference/tas_dem.html">tas_dem()</a></code>, <code><a href="../reference/ibcso.html">ibcso()</a></code>, the <code>wms_*</code> family, and friends) are one-line shims over <code><a href="../reference/dsn.html">dsn()</a></code>. Edit the CSV, not the functions; equivalence is enforced by tests.</p></li>
 <li><p>The GDAL_WMS XML recipes (<code>wms_*</code>) and the mapterhorn VRT now live as readable files in <code>inst/sources/</code>, each with a registry row. The two <code>wms_mapbox_*</code> functions remain token templates and are not rows. <code><a href="../reference/dsn-sources.html">wms_amazon_elevation()</a></code> no longer bakes in a stale 2022 UserAgent.</p></li>
 <li><p>New export <code><a href="../reference/gadm.html">gadm()</a></code>, GADM 4.1 whole-planet GeoParquet hosted as an sds release asset; the geodata.ucdavis.edu GeoPackage remains available as <code>dsn("gadm_gpkg")</code>.</p></li>

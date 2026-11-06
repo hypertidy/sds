@@ -39,5 +39,5 @@ the correct orientation.
 
 ``` r
 seaice_cdr()
-#> [1] "/vsicurl/https://noaadata.apps.nsidc.org/NOAA/G02202_V6/south/daily/2026/sic_pss25_20260923_am2_v06r00.nc"
+#> [1] "/vsicurl/https://noaadata.apps.nsidc.org/NOAA/G02202_V6/south/daily/2026/sic_pss25_20261029_am2_v06r00.nc"
 ```

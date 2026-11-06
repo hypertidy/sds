@@ -105,3 +105,22 @@ test_that("status is enforced through the shims", {
   expect_error(dea_250m_dem(), "superseded")
   expect_warning(CGAZ(old = TRUE), "deprecated")
 })
+
+test_that("WMTS and TMS fixes: Esri canvas layer names, WA as TMS", {
+  expect_match(dsn("esri_dark_gray"), "layer=Canvas_World_Dark_Gray_Base$")
+  expect_match(dsn("esri_light_gray"), "layer=Canvas_World_Light_Gray_Base$")
+  wa <- dsn("wa_gsd_basemap")
+  expect_match(wa, "^<GDAL_WMS>")
+  expect_match(wa, "<Projection>EPSG:7844</Projection>", fixed = TRUE)
+})
+
+test_that("the fixed sources open with GDAL", {
+  skip_on_cran()
+  skip_if_offline("services.arcgisonline.com")
+  skip_if_not_installed("gdalraster")
+  for (n in c("esri_dark_gray", "esri_light_gray", "wa_gsd_basemap")) {
+    ds <- methods::new(gdalraster::GDALRaster, dsn(n))
+    expect_equal(ds$getRasterCount(), 4L, label = n)
+    ds$close()
+  }
+})

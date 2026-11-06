@@ -1,0 +1,25 @@
+<GDAL_WMS>
+  <!-- WA GSD external basemap, GDA2020 (EPSG:7844), ArcGIS tile cache: origin (-400, 400), 256 px tiles,
+       level-0 resolution 0.08798912593428897 deg halving to level 15, 24 x 20 tiles at level 0.
+       From .../GSD_Basemap_External/MapServer?f=json (tileInfo). -->
+  <Service name="TMS">
+    <ServerUrl>https://gissdi.dmp.wa.gov.au/gisexternal/rest/services/External/GSD_Basemap_External/MapServer/tile/${z}/${y}/${x}</ServerUrl>
+  </Service>
+  <DataWindow>
+    <UpperLeftX>-400</UpperLeftX>
+    <UpperLeftY>399.9999999999998</UpperLeftY>
+    <LowerRightX>140.605189740271</LowerRightX>
+    <LowerRightY>-50.504324783560</LowerRightY>
+    <TileLevel>15</TileLevel>
+    <TileCountX>24</TileCountX>
+    <TileCountY>20</TileCountY>
+    <YOrigin>top</YOrigin>
+  </DataWindow>
+  <Projection>EPSG:7844</Projection>
+  <BlockSizeX>256</BlockSizeX>
+  <BlockSizeY>256</BlockSizeY>
+  <BandsCount>4</BandsCount>
+  <ZeroBlockHttpCodes>204,404</ZeroBlockHttpCodes>
+  <MaxConnections>4</MaxConnections>
+  <Cache/>
+</GDAL_WMS>
